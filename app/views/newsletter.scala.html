@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="MS UUDISED">        
+		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/newsletter.css")"/> 
+		<title>Uudistevoog</title>    
+	</head>
+	
+	<body>
+		<a id="avalehele" href="/main/avaleht_uued">Avalehele</a>
+		<h1>Uudiskiri</h1>
+		<form id ="allFields" method = "POST" action ="/uudistevoogLisaKirje">
+			Nimi: <input name="username" type="text"><br>
+			E-mail: <input name="email" type="email"><br>
+			<table>
+				<tr id="firstRow">
+					 <th>Teema1</th>
+					 <th>Teema2</th>
+					 <th>Teema3</th>
+					 <th>Teema4</th>
+					 <th>Teema5</th>
+				</tr>
+				
+				<tr>
+					<td><input type="checkbox" name="options1" value="Teema1"></td>
+					<td><input type="checkbox" name="options2" value="Teema2"></td>
+					<td><input type="checkbox" name="options3" value="Teema3"></td>
+					<td><input type="checkbox" name="options4" value="Teema4"></td>
+					<td><input type="checkbox" name="options5" value="Teema5"></td>
+				</tr>
+			</table>
+			<input type="submit" value="Submit">
+		</form> 
+	</body>
+</html>

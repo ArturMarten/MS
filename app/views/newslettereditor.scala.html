@@ -1,0 +1,47 @@
+@(uudistevooAndmed : java.util.ArrayList[java.util.ArrayList[String]])
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="MS UUDISED">		
+		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/newslettereditor.css")"/> 
+		<title>Uudiskiritoimetaja</title>    
+	</head>
+	<body>
+		<div id="riba">
+			<p>Nimi Siia</p>
+			<a href="/main/avaleht_uued">Logi välja</a>
+		</div>
+		<div id="content">
+		<a id="avalehele" href="/maineditor/avaleht_uued">Avalehele</a>
+		<h1>Uudistevoog</h1>
+			<table>
+				<tr id="firstRow">
+					<th>Nimi</th>
+					<th>E-mail</th>
+					<th>Teema1</th>
+					<th>Teema2</th>
+					<th>Teema3</th>
+					<th>Teema4</th>
+					<th>Teema5</th>
+					<th>Kustuta</th>
+				</tr>
+				@for(i <- 0 until uudistevooAndmed.size()){
+				<tr>
+					<td>@uudistevooAndmed(i)(1)</td>
+					<td>@uudistevooAndmed(i)(2)</td>                            
+					<td>@uudistevooAndmed(i)(3)</td>
+					<td>@uudistevooAndmed(i)(4)</td>
+					<td>@uudistevooAndmed(i)(5)</td>
+					<td>@uudistevooAndmed(i)(6)</td>
+					<td>@uudistevooAndmed(i)(7)</td>
+					<td><form action="/kustutaInimeneUudistevoog/@uudistevooAndmed(i)(0)" method="GET"> 
+						<input type="submit" value="Kustuta">
+					</form></td>
+				</tr>
+				}
+			</table>
+		</div>
+	</body>
+</html>

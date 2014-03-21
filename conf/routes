@@ -1,0 +1,34 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+
+
+GET		/											controllers.Application.main(sort="avaleht_uued")
+GET		/main/:sort									controllers.Application.main(sort: String)
+GET		/maineditor/:sort							controllers.Application.maineditor(sort: String)
+
+GET		/article/:uudis_id							controllers.Application.article(uudis_id: String)
+POST	/saveComment/:uudis_id						controllers.Application.saveComment(uudis_id: String)
+GET		/addLike/:comment_id						controllers.Application.addLike(comment_id: String)
+GET		/inappropriateComment/:comment_id			controllers.Application.inappropriateComment(comment_id: String)
+
+GET		/articleeditor/:uudis_id					controllers.Application.articleeditor(uudis_id: String)
+GET		/uusUudis									controllers.Application.uusUudis()
+POST	/salvestaUudis/:uudis_id					controllers.Application.salvestaUudis(uudis_id: String)
+GET 	/newsletter									controllers.Application.newsletter()
+
+POST	/uudistevoogLisaKirje						controllers.Application.uudistevoogLisaKirje()
+
+
+GET 	/newslettereditor							controllers.Application.newslettereditor()
+GET		/kustutaInimeneUudistevoog/:uudistevoog_id	controllers.Application.kustutaInimeneUudistevoog(uudistevoog_id: String)
+GET 	/login										controllers.Application.login()
+
+GET		/kustutaArtikkel/:uudis_id					controllers.Application.kustutaArtikkel(uudis_id: String)
+GET		/deleteComment/:comment_id					controllers.Application.deleteComment(comment_id: String)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               				controllers.Assets.at(path="/public", file)

@@ -1,0 +1,64 @@
+@(uudis: List[String])
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="MS UUDISED">
+		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")"/> 
+		<title>Avaleht</title>
+	</head>
+	
+	<body>
+		<a id="logisisse" href="/login">Logi sisse </a>
+		<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
+		<div id="content">
+			<table id="teemad">
+				<tr>
+					<td><a href="/main/avaleht_uued">Teema1</a></td>
+					<td><a href="/main/avaleht_uued">Teema2</a></td>
+					<td><a href="/main/avaleht_uued">Teema3</a></td> 
+					<td><a href="/main/avaleht_uued">Teema4</a></td>
+					<td><a href="/main/avaleht_uued">Teema5</a></td>
+				</tr>
+			</table>
+			
+			<table id= "sorteerimine">
+				<tr>
+					<td id="uued"><a href="/main/avaleht_uued">uued</a></td>
+					<td id="enimloetud"><a href="/main/avaleht_enimloetud">enim loetud</a></td>
+					<td id="enimkommenteeritud"><a href="/main/avaleht_enimkommenteeritud">enim kommenteeritud</a></td>
+				</tr>
+			</table>
+			
+			<div id="wrap">
+				<div id="left_col">
+					<img id="ajaleht1" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt">
+						<h1><a href=/article/@uudis(0)>@uudis(1)</a></h1>
+						<p>@uudis(2)</p>
+					<article>
+						<img id="ajaleht3" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt">
+						<h1><a href=/article/@uudis(6)>@uudis(7)</a></h1>
+						<p>@uudis(8)</p>
+					</article>
+				</div>
+				<div id="right_col">
+					<article>
+						<img id="ajaleht2" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt">
+						<h1><a href=/article/@uudis(3)>@uudis(4)</a></h1>
+						<p>@uudis(5)</p>
+					</article>
+					<article>
+						<img id="ajaleht4" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt">
+						<h1><a href=/article/@uudis(9)>@uudis(10)</a></h1>
+						<p>@uudis(11)</p>
+					</article>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+

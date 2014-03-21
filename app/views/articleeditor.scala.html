@@ -1,0 +1,71 @@
+@(uudiseandmed: List[String], kommentaariAndmed: java.util.ArrayList[java.util.ArrayList[String]])
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="MS UUDISED">
+		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/articleeditor.css")"/>
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/comments.js")"></script>
+		<title>Uudistoimetaja</title>
+	</head>
+	
+	<body>
+		<div id="riba">
+			<a id="logivalja" href="/article/@uudiseandmed(0)">Logi välja</a>
+			<p id="kasutajatunnus">Nimi Siia</p>
+			<a id="newslettereditor" href="/newslettereditor">Halda uudiskirju</a>
+		</div>
+		<div id="content">
+			<table id="teemad">
+				<tr>
+					<td id="teema1"><a href="/maineditor/avaleht_uued">Teema1</a></td>
+					<td id="teema2"><a href="/maineditor/avaleht_uued">Teema2</a></td>
+					<td id="teema3"><a href="/maineditor/avaleht_uued">Teema3</a></td>
+					<td id="teema4"><a href="/maineditor/avaleht_uued">Teema4</a></td>
+					<td id="teema5"><a href="/maineditor/avaleht_uued">Teema5</a></td>
+				</tr>
+			</table>
+			
+			<article>
+				<form id="pildilaadimine" method="post">
+					<input type="text" id="failiaadress"
+						onfocus="if(this.value == 'Pildi URL') { this.value = ''; }"
+						value="Pildi URL" /> <input id="pildilaadimisenupp" type="button"
+						value="Lae pilt">
+				</form>
+				
+				<br> <br> <br> <br>
+				
+				<form method="post"  action="/salvestaUudis/@uudiseandmed(0)">
+					<textarea id="pealkiri" name = "pealkiri">@uudiseandmed(1)</textarea>
+					<textarea id="sissejuhatus" name = "sissejuhatus">@uudiseandmed(2)</textarea>
+					<textarea id="teemaarendus" name = "teemaarendus">@uudiseandmed(3)</textarea>
+					<textarea id="kokkuvote" name = "kokkuvote">@uudiseandmed(4)</textarea>
+					<input id="salvesta" type="submit" value="Salvesta muudatused">
+				</form>
+			</article>
+			
+			<br>
+			<input id="loeVeelKommentaare" type="button"
+				value="Redigeeri kommentaare">
+			<div id="commentsBody" class="commentsBody">
+			@for(i <- 0 until kommentaariAndmed.size()) {
+				<div class="comment">
+					<div class="muuu">
+						<div class="nimi"> @kommentaariAndmed(i)(1) </div>
+						<div class="email"> @kommentaariAndmed(i)(2) </div>
+						<div class="kuupaev"> @kommentaariAndmed(i)(4) </div>
+						<form action="/deleteComment/@kommentaariAndmed(i)(0)" method="GET">
+							<input class="kustutaKommentaar" type="submit" value="Kustuta kommentaar" >
+						</form>	
+						<p>Like @kommentaariAndmed(i)(3)</p><br>
+					</div>
+					<div class="sisu"> @kommentaariAndmed(i)(5) </div>
+				</div>
+			}
+			</div>
+		</div>
+	</body>
+</html>

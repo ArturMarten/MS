@@ -1,0 +1,85 @@
+body {
+    font-family: "Times New Roman",Georgia,Serif;
+    background-color: #ccc;
+    margin-left: 12%;
+    margin-right: 12%;
+}
+#content {
+    margin-left: 12%;
+    margin-right: 12%;    
+}
+
+#newslettereditor {
+    float: right;
+    margin-right: 1em;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#kasutajatunnus {
+    float: right;
+    margin-right: 1em;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#logivalja{
+    float: right;
+    padding-right: 12%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#riba {
+    float: right;
+    padding-right: 12%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 0.8em;
+
+    white-space: nowrap;
+}
+
+#teemad{
+    align-items: center;
+    font-size: 1.4em;
+    width:100%;
+    border: 1em;
+}
+
+a{
+    color:black;
+}
+a:hover{
+    color:white;
+}
+a:active{
+    color:blue;
+}
+
+#sorteerimine{
+    margin-top: 2%;
+    width: 30%;
+    font-size: 1.2em;
+}
+td, th {
+    text-align: center;
+    border: solid 1px black;
+}
+
+#ajaleht1,#ajaleht2,#ajaleht3, #ajaleht4{
+   width: 60%;
+}
+h1{
+    font-size: 2em;
+}
+#wrap {
+   width:100%;
+   margin:0 auto;
+}
+#left_col {
+   float:left;
+   width:40%;
+}
+#right_col {
+   float:right;
+   width:40%;
+}

@@ -1,0 +1,128 @@
+body {
+    font-family: "Times New Roman",Georgia,Serif;
+    background-color: #ccc;
+}
+#content {
+    margin-left: 12%;
+    margin-right: 12%;    
+}
+
+#riba {
+    float: right;
+    padding-right: 12%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 0.8em;
+
+    white-space: nowrap;
+}
+#teemad{
+    align-items: center;
+    font-size: 1.4em;
+    width:100%;
+    border: 1em;
+}
+#teema1,#teema2,#teema3,#teema4,#teema5 {
+    text-align: center;
+    border: solid 1px black;
+}
+a{
+    color:black;
+}
+a:hover{
+    color:white;
+}
+a:active{
+    color:blue;
+}
+#proovipilt{
+    
+    max-height: 40%;
+    max-width: 50%;
+}   
+
+#sissejuhatus, #teemaarendus{
+    display : block;
+    width   : 70%;
+    height: 15em;
+    resize  : none;
+    overflow: auto;
+    font-size: 1.1em; 
+}
+#kokkuvote{
+     display : block;
+    width   : 70%;
+    height: 10em;
+    resize  : none;
+    overflow: auto;
+    font-size: 1.1em; 
+}
+
+form{
+    display: inline;
+}
+#kommentaarikast{
+   display : block;
+  width   : 70%;
+  height  : 5em;
+  resize  : none;
+  overflow: auto;
+}
+#saada, #loeveelkommentaare {
+  background   : none;
+  cursor       : pointer;
+}
+
+.commentsBody{
+    display: block;
+    position: relative;
+    margin-top: 2em;
+    overflow: hidden;
+    font-size: 0.8em;
+}
+.comment{
+    margin-bottom: 0.5em;
+    border: solid #036;
+    border-width: 3px;
+}
+.nimi {
+    padding-right: 0.9em;
+    display: inline-block;
+    float: left;
+    position: relative;
+}
+.email{
+    padding-right: 0.9em;
+    display: inline-block;
+    float: left;
+    position: relative;
+}
+.kuupaev{
+    padding-right: 0.9em;
+    display: inline-block;
+    float: left;
+    position: relative;
+}
+.like{
+    padding-right: 0.9em;
+    display: inline-block;
+    float: right;
+    position: relative;
+}
+p {
+	padding-right: 0.9em;
+    display: inline-block;
+    float: right;
+    position: relative;
+}
+.ebasobivKommentaar{
+    display: inline-block;
+    float: right;
+    position: relative;
+}
+.sisu{
+    padding-top: 2em;
+    padding-bottom: 0.3em;
+    word-wrap: break-word;
+    position: relative;
+}

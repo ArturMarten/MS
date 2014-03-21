@@ -1,0 +1,79 @@
+@(uudis: List[String])
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="MS UUDISED"> 
+		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/maineditor.css")"/> 
+		<title>Avalehttoimetaja</title>
+   </head>
+   
+   <body>
+		<div id="riba">
+			<a id="logivalja" href="/main/avaleht_uued">Logi välja</a>
+			<p id="kasutajatunnus">Nimi Siia</p>
+			<a id="newslettereditor" href="/newslettereditor">Halda uudiskirju </a>
+		</div>
+		<div id="content">
+			<table id="teemad">
+				<tr>
+					<td><a href="/maineditor/avaleht_uued">Teema1</a></td>
+					<td><a href="/maineditor/avaleht_uued">Teema2</a></td>
+					<td><a href="/maineditor/avaleht_uued">Teema3</a></td> 
+					<td><a href="/maineditor/avaleht_uued">Teema4</a></td>
+					<td><a href="/maineditor/avaleht_uued">Teema5</a></td>
+				</tr>
+			</table>
+			<table id= "sorteerimine">
+				<tr>
+					<td id="uued"><a href="/maineditor/avaleht_uued">uued</a></td>
+					<td id="enimloetud"><a href="/maineditor/avaleht_enimloetud">enim loetud</a></td>
+					<td id="enimkommenteeritud"><a href="/maineditor/avaleht_enimkommenteeritud">enim kommenteeritud</a></td>
+				</tr>
+			</table>
+			<a href="/uusUudis">Uus uudis</a>
+			<div id="wrap">
+				<div id="left_col">
+					<article>
+						<img id="ajaleht1" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt"><br>
+						<a href="/articleeditor/@uudis(0)">Muuda uudist</a>
+						<a href="/kustutaArtikkel/@uudis(0)">Kustuta uudis</a>
+						<h1><a href="/articleeditor/@uudis(0)">@uudis(1)</a></h1>
+						<p>@uudis(2)</p>
+					</article>
+					
+					 <article>
+						<img id="ajaleht2" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt"><br>
+						<a href="/articleeditor/@uudis(6)">Muuda uudist</a>
+						<a href="/kustutaArtikkel/@uudis(6)">Kustuta uudis</a>
+						<h1><a href="/articleeditor/@uudis(6)">@uudis(7)</a></h1>
+						<p>@uudis(8)</p>
+					</article>
+				</div>
+				<div id="right_col">
+					<article>
+						<img id="ajaleht3" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt"><br>
+						<a href="/articleeditor/@uudis(3)">Muuda uudist</a>
+						<a href="/kustutaArtikkel/@uudis(3)">Kustuta uudis</a>
+						<h1><a href="/articleeditor/@uudis(3)">@uudis(4)</a></h1>
+						<p>@uudis(5)</p>
+					</article>
+					
+					<article>
+						<img id="ajaleht4" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt"><br>
+						<a href="/articleeditor/@uudis(9)">Muuda uudist</a>
+						<a href="/kustutaArtikkel/@uudis(9)">Kustuta uudis</a>
+						<h1><a href="/articleeditor/@uudis(9)">@uudis(10)</a></h1>
+						<p>@uudis(11)</p>
+					</article>
+				 </div>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+
