@@ -15,6 +15,7 @@
 			<a id="logivalja" href="/main/avaleht_uued">Logi välja</a>
 			<p id="kasutajatunnus">Nimi Siia</p>
 			<a id="newslettereditor" href="/newslettereditor">Halda uudiskirju </a>
+			<a id="uusUudis" href="/newArticle">Uus uudis</a>
 		</div>
 		<div id="content">
 			<table id="teemad">
@@ -33,21 +34,20 @@
 					<td id="enimkommenteeritud"><a href="/maineditor/avaleht_enimkommenteeritud">enim kommenteeritud</a></td>
 				</tr>
 			</table>
-			<a href="/uusUudis">Uus uudis</a>
+			
 			<div id="wrap">
 				<div id="left_col">
 					<article>
 						<img id="ajaleht1" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt"><br>
 						<a href="/articleeditor/@uudis(0)">Muuda uudist</a>
-						<a href="/kustutaArtikkel/@uudis(0)">Kustuta uudis</a>
+						<a href="/deleteArticle/@uudis(0)">Kustuta uudis</a>
 						<h1><a href="/articleeditor/@uudis(0)">@uudis(1)</a></h1>
 						<p>@uudis(2)</p>
 					</article>
-					
 					 <article>
 						<img id="ajaleht2" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt"><br>
 						<a href="/articleeditor/@uudis(6)">Muuda uudist</a>
-						<a href="/kustutaArtikkel/@uudis(6)">Kustuta uudis</a>
+						<a href="/deleteArticle/@uudis(6)">Kustuta uudis</a>
 						<h1><a href="/articleeditor/@uudis(6)">@uudis(7)</a></h1>
 						<p>@uudis(8)</p>
 					</article>
@@ -56,15 +56,14 @@
 					<article>
 						<img id="ajaleht3" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt"><br>
 						<a href="/articleeditor/@uudis(3)">Muuda uudist</a>
-						<a href="/kustutaArtikkel/@uudis(3)">Kustuta uudis</a>
+						<a href="/deleteArticle/@uudis(3)">Kustuta uudis</a>
 						<h1><a href="/articleeditor/@uudis(3)">@uudis(4)</a></h1>
 						<p>@uudis(5)</p>
 					</article>
-					
 					<article>
 						<img id="ajaleht4" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt"><br>
 						<a href="/articleeditor/@uudis(9)">Muuda uudist</a>
-						<a href="/kustutaArtikkel/@uudis(9)">Kustuta uudis</a>
+						<a href="/deleteArticle/@uudis(9)">Kustuta uudis</a>
 						<h1><a href="/articleeditor/@uudis(9)">@uudis(10)</a></h1>
 						<p>@uudis(11)</p>
 					</article>
@@ -73,7 +72,3 @@
 		</div>
 	</body>
 </html>
-
-
-
-

@@ -1,6 +1,12 @@
 package models;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
 
+import play.db.DB;
 
 @Entity
 @Table(name="uudis")
-public class Uudis {
+public class Article {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -37,6 +44,38 @@ public class Uudis {
 
 	@Column(name="kommentaar_id")
 	private int kommentaar_id;
+	
+	
+	public static List<String> show(String uudis_id) throws SQLException{
+		List<String> uudiseandmed = new ArrayList<String>();
+		Connection connection = DB.getConnection();
+		PreparedStatement statementUudis = connection
+				.prepareStatement("Select * from uudis where id = ?");
+
+		statementUudis.setInt(1, Integer.parseInt(uudis_id));
+
+		ResultSet resultUudis = statementUudis.executeQuery();
+		resultUudis.next();
+		uudiseandmed.add(resultUudis.getString("id"));
+		uudiseandmed.add(resultUudis.getString("pealkiri"));
+		uudiseandmed.add(resultUudis.getString("sissejuhatus"));
+		uudiseandmed.add(resultUudis.getString("teemaarendus"));
+		uudiseandmed.add(resultUudis.getString("kokkuvote"));
+
+		int vaatamisi = resultUudis.getInt("vaatamistearv") + 1;
+
+		statementUudis = connection
+				.prepareStatement("Update uudis set vaatamistearv = ? where id = ?");
+		statementUudis.setInt(1, vaatamisi);
+		statementUudis.setInt(2, Integer.parseInt(uudis_id));
+
+		statementUudis.executeUpdate();
+
+		resultUudis.close();
+		statementUudis.close();
+		
+		return uudiseandmed;
+	}
 
 	public int getId() {
 		return id;

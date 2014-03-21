@@ -4,31 +4,27 @@
 
 # Home page
 
+GET    /                                      controllers.MainController.main(sort="avaleht_uued")
+GET    /main/:sort                            controllers.MainController.main(sort: String)
+GET    /maineditor/:sort                      controllers.MainController.maineditor(sort: String)
 
-GET		/											controllers.Application.main(sort="avaleht_uued")
-GET		/main/:sort									controllers.Application.main(sort: String)
-GET		/maineditor/:sort							controllers.Application.maineditor(sort: String)
+GET    /article/:uudis_id                     controllers.ArticleController.article(uudis_id: String)
+GET    /articleeditor/:uudis_id               controllers.ArticleController.articleeditor(uudis_id: String)
+GET    /newArticle                            controllers.ArticleController.newArticle()
+POST   /saveArticle/:uudis_id                 controllers.ArticleController.saveArticle(uudis_id: String)
+GET    /deleteArticle/:uudis_id               controllers.ArticleController.deleteArticle(uudis_id: String)
 
-GET		/article/:uudis_id							controllers.Application.article(uudis_id: String)
-POST	/saveComment/:uudis_id						controllers.Application.saveComment(uudis_id: String)
-GET		/addLike/:comment_id						controllers.Application.addLike(comment_id: String)
-GET		/inappropriateComment/:comment_id			controllers.Application.inappropriateComment(comment_id: String)
+POST   /saveComment/:uudis_id                 controllers.CommentController.saveComment(uudis_id: String)
+GET    /deleteComment/:comment_id             controllers.CommentController.deleteComment(comment_id: String)
+GET    /addLike/:comment_id                   controllers.CommentController.addLike(comment_id: String)
+GET    /inappropriateComment/:comment_id      controllers.CommentController.inappropriateComment(comment_id: String)
 
-GET		/articleeditor/:uudis_id					controllers.Application.articleeditor(uudis_id: String)
-GET		/uusUudis									controllers.Application.uusUudis()
-POST	/salvestaUudis/:uudis_id					controllers.Application.salvestaUudis(uudis_id: String)
-GET 	/newsletter									controllers.Application.newsletter()
+GET    /newsletter                            controllers.NewsletterController.newsletter()
+GET    /newslettereditor                      controllers.NewsletterController.newslettereditor()
+POST   /addToNewsletter                       controllers.NewsletterController.addToNewsletter()
+GET    /removeFromNewsletter/:uudistevoog_id  controllers.NewsletterController.removeFromNewsletter(uudistevoog_id: String)
 
-POST	/uudistevoogLisaKirje						controllers.Application.uudistevoogLisaKirje()
-
-
-GET 	/newslettereditor							controllers.Application.newslettereditor()
-GET		/kustutaInimeneUudistevoog/:uudistevoog_id	controllers.Application.kustutaInimeneUudistevoog(uudistevoog_id: String)
-GET 	/login										controllers.Application.login()
-
-GET		/kustutaArtikkel/:uudis_id					controllers.Application.kustutaArtikkel(uudis_id: String)
-GET		/deleteComment/:comment_id					controllers.Application.deleteComment(comment_id: String)
-
+GET    /login                                 controllers.ApplicationController.login()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               				controllers.Assets.at(path="/public", file)
+GET     /assets/*file                         controllers.Assets.at(path="/public", file)

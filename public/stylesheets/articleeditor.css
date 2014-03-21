@@ -6,6 +6,30 @@ body {
     margin-left: 12%;
     margin-right: 12%;    
 }
+#uusUudis {
+    float: right;
+    margin-right: 1em;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#newslettereditor {
+    float: right;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#kasutajatunnus {
+    float: right;
+    margin-right: 1em;
+    margin-left: 30%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#logivalja{
+    float: right;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
 
 #riba {
     float: right;
@@ -13,7 +37,6 @@ body {
     margin-top: 5%;
     margin-bottom: 5%;
     font-size: 0.8em;
-
     white-space: nowrap;
 }
 #teemad{
