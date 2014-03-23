@@ -16,8 +16,7 @@ public class MainController extends ApplicationController{
 	public static Result main(String sort) throws SQLException {
 		Connection connection = DB.getConnection();
 		Statement statement = connection.createStatement();
-		ResultSet result = statement.executeQuery("Select * from " + sort
-				+ " limit 4;");
+		ResultSet result = statement.executeQuery("Select * from " + sort + " limit 10;");
 
 		List<String> uudis = new ArrayList<String>();
 		while (result.next()) {
@@ -36,8 +35,7 @@ public class MainController extends ApplicationController{
 	public static Result maineditor(String sort) throws SQLException {
 		Connection connection = DB.getConnection();
 		Statement statement = connection.createStatement();
-		ResultSet result = statement.executeQuery("Select * from " + sort
-				+ " limit 4;");
+		ResultSet result = statement.executeQuery("Select * from " + sort + " limit 10;");
 
 		List<String> uudis = new ArrayList<String>();
 
