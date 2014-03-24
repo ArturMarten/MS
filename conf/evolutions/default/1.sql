@@ -1,4 +1,3 @@
-
 # --- !Ups
 
 create sequence article_seq;
@@ -6,6 +5,8 @@ create sequence article_seq;
 create sequence comment_seq;
 
 create sequence newsletter_seq;
+
+create sequence users_seq;
 
 create table article (
   id                        integer default nextval('article_seq'::regclass) not null,
@@ -43,8 +44,12 @@ create table newsletter (
   constraint pk_newsletter primary key (id))
 ;
 
-
-
+create table users (
+  id                        integer not null,
+  email                     varchar(255),
+  password                  varchar(255),
+  constraint pk_users primary key (id))
+;
 
 # --- !Downs
 
@@ -54,9 +59,12 @@ drop table if exists comment cascade;
 
 drop table if exists newsletter cascade;
 
+drop table if exists users cascade;
+
 drop sequence if exists article_seq;
 
 drop sequence if exists comment_seq;
 
 drop sequence if exists newsletter_seq;
 
+drop sequence if exists users_seq;
