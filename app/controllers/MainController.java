@@ -7,8 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import play.Logger;
-
 import play.db.DB;
 import play.mvc.Result;
 import views.html.main;
@@ -18,7 +16,7 @@ public class MainController extends ApplicationController{
 	public static Result main(String sort) throws SQLException {
 		Connection connection = DB.getConnection();
 		Statement statement = connection.createStatement();
-		ResultSet result = statement.executeQuery("Select * from " + sort + " limit 10;");
+		ResultSet result = statement.executeQuery("SELECT * FROM " + sort + " LIMIT 10;");
 		
 		List<String> article = new ArrayList<String>();
 		while (result.next()) {
@@ -37,7 +35,7 @@ public class MainController extends ApplicationController{
 	public static Result maineditor(String sort) throws SQLException {
 		Connection connection = DB.getConnection();
 		Statement statement = connection.createStatement();
-		ResultSet result = statement.executeQuery("Select * from " + sort + " limit 10;");
+		ResultSet result = statement.executeQuery("SELECT * FROM " + sort + " LIMIT 10;");
 
 		List<String> article = new ArrayList<String>();
 

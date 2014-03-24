@@ -30,22 +30,24 @@ public class Comment extends Model {
 	
 	public String content;
 	
+	public int inappropriate;
+	
 	public static ArrayList<ArrayList<String>> show(String article_id) throws SQLException{
 		ArrayList<ArrayList<String>> comment = new ArrayList<>();
 		Connection connection = DB.getConnection();
 		PreparedStatement statementKommentaar = connection
-				.prepareStatement("Select * from comment where article_id = ? ORDER BY date");
+				.prepareStatement("SELECT * FROM comment WHERE article_id = ? ORDER BY date");
 		statementKommentaar.setInt(1, Integer.parseInt(article_id));
 		ResultSet resultKommentaar = statementKommentaar.executeQuery();
 		
 		while (resultKommentaar.next()) {
 			ArrayList<String> kommentaariAndmed = new ArrayList<String>();
 			kommentaariAndmed.add(resultKommentaar.getString("id"));
-			kommentaariAndmed.add(resultKommentaar.getString("nimi"));
+			kommentaariAndmed.add(resultKommentaar.getString("name"));
 			kommentaariAndmed.add(resultKommentaar.getString("email"));
-			kommentaariAndmed.add(resultKommentaar.getString("meeldib"));
-			kommentaariAndmed.add(resultKommentaar.getString("kuupaev"));
-			kommentaariAndmed.add(resultKommentaar.getString("sisu"));
+			kommentaariAndmed.add(resultKommentaar.getString("likes"));
+			kommentaariAndmed.add(resultKommentaar.getString("date"));
+			kommentaariAndmed.add(resultKommentaar.getString("content"));
 			comment.add(kommentaariAndmed);
 		}
 		resultKommentaar.close();

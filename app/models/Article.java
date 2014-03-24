@@ -36,13 +36,11 @@ public class Article extends Model{
 	
 	public int views;
 	
-	
-	
 	public static List<String> show(String article_id) throws SQLException{
 		List<String> uudiseandmed = new ArrayList<String>();
 		Connection connection = DB.getConnection();
 		PreparedStatement statementUudis = connection
-				.prepareStatement("Select * from article where id = ?");
+				.prepareStatement("SELECT * FROM article WHERE id = ?");
 
 		statementUudis.setInt(1, Integer.parseInt(article_id));
 
@@ -57,7 +55,7 @@ public class Article extends Model{
 		int vaatamisi = resultUudis.getInt("views") + 1;
 
 		statementUudis = connection
-				.prepareStatement("Update article set views = ? where id = ?");
+				.prepareStatement("UPDATE article SET views = ? WHERE id = ?");
 		statementUudis.setInt(1, vaatamisi);
 		statementUudis.setInt(2, Integer.parseInt(article_id));
 

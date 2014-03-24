@@ -13,8 +13,7 @@ import play.mvc.Result;
 public class CommentController extends ApplicationController{
 	public static Result saveComment(String article_id) throws SQLException {
 		Connection connection = DB.getConnection();
-		PreparedStatement statement = connection
-				.prepareStatement("Insert Into comment(name,email,likes,article_id,content) Values(?,?,?,?,?)");
+		PreparedStatement statement = connection.prepareStatement("INSERT INTO comment(name,email,likes,article_id,content) VALUES (?,?,?,?,?)");
 
 		DynamicForm data = Form.form().bindFromRequest();
 		String nimiKommentaar = data.get("nimi");
@@ -36,8 +35,7 @@ public class CommentController extends ApplicationController{
 	
 	public static Result deleteComment(String comment_id) throws SQLException {
 		Connection connection = DB.getConnection();
-		PreparedStatement statement = connection
-				.prepareStatement("SELECT * FROM comment WHERE id = ?");
+		PreparedStatement statement = connection.prepareStatement("SELECT * FROM comment WHERE id = ?");
 
 		statement.setInt(1, Integer.parseInt(comment_id));
 		ResultSet result = statement.executeQuery();
@@ -45,8 +43,7 @@ public class CommentController extends ApplicationController{
 
 		String article_id = Integer.toString(result.getInt("article_id"));
 
-		statement = connection
-				.prepareStatement("Delete from comment where id = ?");
+		statement = connection.prepareStatement("DELETE FROM comment WHERE id = ?");
 		statement.setInt(1, Integer.parseInt(comment_id));
 		statement.executeUpdate();
 
@@ -58,8 +55,7 @@ public class CommentController extends ApplicationController{
 
 	public static Result addLike(String comment_id) throws SQLException {
 		Connection connection = DB.getConnection();
-		PreparedStatement statement = connection
-				.prepareStatement("SELECT * FROM comment WHERE id = ?");
+		PreparedStatement statement = connection.prepareStatement("SELECT * FROM comment WHERE id = ?");
 
 		statement.setInt(1, Integer.parseInt(comment_id));
 		ResultSet result = statement.executeQuery();
@@ -68,8 +64,7 @@ public class CommentController extends ApplicationController{
 		int like = result.getInt("likes") + 1;
 		String uudis_id = Integer.toString(result.getInt("article_id"));
 
-		statement = connection
-				.prepareStatement("UPDATE comment SET likes = ? WHERE id = ?");
+		statement = connection.prepareStatement("UPDATE comment SET likes = ? WHERE id = ?");
 		statement.setInt(1, like);
 		statement.setInt(2, Integer.parseInt(comment_id));
 		statement.executeUpdate();
@@ -81,22 +76,19 @@ public class CommentController extends ApplicationController{
 		return redirect(routes.ArticleController.article(uudis_id));
 	}
 
-	public static Result inappropriateComment(String comment_id)
-			throws SQLException {
+	public static Result inappropriateComment(String comment_id) throws SQLException {
 		Connection connection = DB.getConnection();
-		PreparedStatement statement = connection
-				.prepareStatement("SELECT * FROM comment WHERE id = ?");
+		PreparedStatement statement = connection.prepareStatement("SELECT * FROM comment WHERE id = ?");
 
 		statement.setInt(1, Integer.parseInt(comment_id));
 		ResultSet result = statement.executeQuery();
 		result.next();
 
-		int ebasobiv = result.getInt("ebasobiv") + 1;
+		int inappropriate = result.getInt("inappropriate") + 1;
 		String article_id = Integer.toString(result.getInt("article_id"));
 
-		statement = connection
-				.prepareStatement("UPDATE comment SET ebasobiv = ? WHERE id = ?");
-		statement.setInt(1, ebasobiv);
+		statement = connection.prepareStatement("UPDATE comment SET inappropriate = ? WHERE id = ?");
+		statement.setInt(1, inappropriate);
 		statement.setInt(2, Integer.parseInt(comment_id));
 		statement.executeUpdate();
 

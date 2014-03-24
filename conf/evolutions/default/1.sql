@@ -27,6 +27,7 @@ create table comment (
   date                      timestamp(6) default now(),
   article_id                integer,
   content                   varchar(255),
+  inappropriate             integer,
   constraint pk_comment primary key (id))
 ;
 

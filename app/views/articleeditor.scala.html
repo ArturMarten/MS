@@ -14,7 +14,7 @@
 	<body>
 		<div id="riba">
 			<a id="logivalja" href="/article/@uudiseandmed(0)">Logi välja</a>
-			<p id="kasutajatunnus">Nimi Siia</p>
+			<p id="kasutajatunnus">Nimi Siia</p><br>
 			<a id="newslettereditor" href="/newslettereditor">Halda uudiskirju</a>
 			<a id="uusUudis" href="/newArticle">Uus uudis</a>
 		</div>
@@ -37,14 +37,18 @@
 						value="Lae pilt">
 				</form>
 				
-				<br> <br> <br> <br>
+				<br> <br>
 				
 				<form method="post"  action="/saveArticle/@uudiseandmed(0)">
-					<textarea id="pealkiri" name = "pealkiri">@uudiseandmed(1)</textarea>
-					<textarea id="sissejuhatus" name = "sissejuhatus">@uudiseandmed(2)</textarea>
-					<textarea id="teemaarendus" name = "teemaarendus">@uudiseandmed(3)</textarea>
-					<textarea id="kokkuvote" name = "kokkuvote">@uudiseandmed(4)</textarea>
-					<input id="salvesta" type="submit" value="Salvesta muudatused">
+					<b>Pealkiri</b>
+					<textarea id="title" name = "title">@uudiseandmed(1)</textarea>
+					<b>Sissejuhatus</b>
+					<textarea id="intro" name = "intro">@uudiseandmed(2)</textarea>
+					<b>Teemaarendus</b>
+					<textarea id="body" name = "body">@uudiseandmed(3)</textarea>
+					<b>Kokkuvõte</b>
+					<textarea id="summary" name = "summary">@uudiseandmed(4)</textarea>
+					<input id="save" type="submit" value="Salvesta muudatused">
 				</form>
 			</article>
 			

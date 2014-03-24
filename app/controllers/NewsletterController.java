@@ -21,8 +21,7 @@ public class NewsletterController extends ApplicationController{
 	
 	public static Result newslettereditor() throws SQLException {
 		Connection connection = DB.getConnection();
-		PreparedStatement statement = connection
-				.prepareStatement("Select * from newsletter");
+		PreparedStatement statement = connection.prepareStatement("SELECT * FROM newsletter");
 		ResultSet result = statement.executeQuery();
 		
 		ArrayList<ArrayList<String>> uudistevooAndmed = new ArrayList<>();
@@ -48,8 +47,7 @@ public class NewsletterController extends ApplicationController{
 	
 	public static Result addToNewsletter() throws SQLException {
 		Connection connection = DB.getConnection();
-		PreparedStatement statement = connection
-				.prepareStatement("Insert Into newsletter(name,email,topic1,topic2,topic3,topic4,topic5) Values(?,?,?,?,?,?,?)");
+		PreparedStatement statement = connection.prepareStatement("INSERT INTO newsletter(name,email,topic1,topic2,topic3,topic4,topic5) VALUES(?,?,?,?,?,?,?)");
 
 		DynamicForm data = Form.form().bindFromRequest();
 		String nimi = data.get("username");
@@ -98,8 +96,7 @@ public class NewsletterController extends ApplicationController{
 	public static Result removeFromNewsletter(String newsletter_id)
 			throws SQLException {
 		Connection connection = DB.getConnection();
-		PreparedStatement statement = connection
-				.prepareStatement("Delete from newsletter where id = ?");
+		PreparedStatement statement = connection.prepareStatement("DELETE FROM newsletter WHERE id = ?");
 		statement.setInt(1, Integer.parseInt(newsletter_id));
 		statement.executeUpdate();
 

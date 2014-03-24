@@ -21,7 +21,6 @@ body {
 #kasutajatunnus {
     float: right;
     margin-right: 1em;
-    margin-left: 30%;
     margin-top: 5%;
     margin-bottom: 5%;
 }
@@ -59,26 +58,36 @@ a:active{
     color:blue;
 }
 #proovipilt{
-    
     max-height: 40%;
     max-width: 50%;
-}   
-
-#sissejuhatus, #teemaarendus{
+}
+#title{
     display : block;
     width   : 70%;
-    height: 15em;
+    height  : 2em;
     resize  : none;
     overflow: auto;
-    font-size: 1.1em; 
+    font-size: 1.1em;
+    margin-bottom: 1em;
 }
-#kokkuvote{
-     display : block;
+
+#intro, #body{
+    display : block;
     width   : 70%;
-    height: 10em;
+    height  : 15em;
     resize  : none;
     overflow: auto;
-    font-size: 1.1em; 
+    font-size: 1.1em;
+    margin-bottom: 1em;
+}
+#summary{
+    display : block;
+    width   : 70%;
+    height  : 10em;
+    resize  : none;
+    overflow: auto;
+    font-size: 1.1em;
+    margin-bottom: 1em;
 }
 
 form{
