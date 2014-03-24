@@ -4,17 +4,17 @@
 
 # Home page
 
-GET    /                                      controllers.MainController.main(sort="avaleht_uued")
+GET    /                                      controllers.MainController.main(sort="main_new")
 GET    /main/:sort                            controllers.MainController.main(sort: String)
 GET    /maineditor/:sort                      controllers.MainController.maineditor(sort: String)
 
-GET    /article/:uudis_id                     controllers.ArticleController.article(uudis_id: String)
-GET    /articleeditor/:uudis_id               controllers.ArticleController.articleeditor(uudis_id: String)
+GET    /article/:article_id                   controllers.ArticleController.article(article_id: String)
+GET    /articleeditor/:article_id             controllers.ArticleController.articleeditor(article_id: String)
 GET    /newArticle                            controllers.ArticleController.newArticle()
-POST   /saveArticle/:uudis_id                 controllers.ArticleController.saveArticle(uudis_id: String)
-GET    /deleteArticle/:uudis_id               controllers.ArticleController.deleteArticle(uudis_id: String)
+POST   /saveArticle/:article_id               controllers.ArticleController.saveArticle(article_id: String)
+GET    /deleteArticle/:article_id             controllers.ArticleController.deleteArticle(article_id: String)
 
-POST   /saveComment/:uudis_id                 controllers.CommentController.saveComment(uudis_id: String)
+POST   /saveComment/:article_id               controllers.CommentController.saveComment(article_id: String)
 GET    /deleteComment/:comment_id             controllers.CommentController.deleteComment(comment_id: String)
 GET    /addLike/:comment_id                   controllers.CommentController.addLike(comment_id: String)
 GET    /inappropriateComment/:comment_id      controllers.CommentController.inappropriateComment(comment_id: String)

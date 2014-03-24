@@ -11,10 +11,10 @@ import play.db.DB;
 import play.mvc.Result;
 
 public class CommentController extends ApplicationController{
-	public static Result saveComment(String uudis_id) throws SQLException {
+	public static Result saveComment(String article_id) throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection
-				.prepareStatement("Insert Into kommentaarid(nimi,email,meeldib,uudis_id,sisu) Values(?,?,?,?,?)");
+				.prepareStatement("Insert Into comment(name,email,likes,article_id,content) Values(?,?,?,?,?)");
 
 		DynamicForm data = Form.form().bindFromRequest();
 		String nimiKommentaar = data.get("nimi");
@@ -24,52 +24,52 @@ public class CommentController extends ApplicationController{
 		statement.setString(1, nimiKommentaar);
 		statement.setString(2, emailKommentaar);
 		statement.setInt(3, 0);
-		statement.setInt(4, Integer.parseInt(uudis_id));
+		statement.setInt(4, Integer.parseInt(article_id));
 		statement.setString(5, kommentaarikast);
 		statement.executeUpdate();
 		
 		statement.close();
 		connection.close();
 
-		return redirect(routes.ArticleController.article(uudis_id));
+		return redirect(routes.ArticleController.article(article_id));
 	}
 	
 	public static Result deleteComment(String comment_id) throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection
-				.prepareStatement("SELECT * FROM kommentaarid WHERE id = ?");
+				.prepareStatement("SELECT * FROM comment WHERE id = ?");
 
 		statement.setInt(1, Integer.parseInt(comment_id));
 		ResultSet result = statement.executeQuery();
 		result.next();
 
-		String uudis_id = Integer.toString(result.getInt("uudis_id"));
+		String article_id = Integer.toString(result.getInt("article_id"));
 
 		statement = connection
-				.prepareStatement("Delete from kommentaarid where id = ?");
+				.prepareStatement("Delete from comment where id = ?");
 		statement.setInt(1, Integer.parseInt(comment_id));
 		statement.executeUpdate();
 
 		statement.close();
 		connection.close();
 
-		return redirect(routes.ArticleController.articleeditor(uudis_id));
+		return redirect(routes.ArticleController.articleeditor(article_id));
 	}
 
 	public static Result addLike(String comment_id) throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection
-				.prepareStatement("SELECT * FROM kommentaarid WHERE id = ?");
+				.prepareStatement("SELECT * FROM comment WHERE id = ?");
 
 		statement.setInt(1, Integer.parseInt(comment_id));
 		ResultSet result = statement.executeQuery();
 		result.next();
 
-		int like = result.getInt("meeldib") + 1;
-		String uudis_id = Integer.toString(result.getInt("uudis_id"));
+		int like = result.getInt("likes") + 1;
+		String uudis_id = Integer.toString(result.getInt("article_id"));
 
 		statement = connection
-				.prepareStatement("UPDATE kommentaarid SET meeldib = ? WHERE id = ?");
+				.prepareStatement("UPDATE comment SET likes = ? WHERE id = ?");
 		statement.setInt(1, like);
 		statement.setInt(2, Integer.parseInt(comment_id));
 		statement.executeUpdate();
@@ -85,17 +85,17 @@ public class CommentController extends ApplicationController{
 			throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection
-				.prepareStatement("SELECT * FROM kommentaarid WHERE id = ?");
+				.prepareStatement("SELECT * FROM comment WHERE id = ?");
 
 		statement.setInt(1, Integer.parseInt(comment_id));
 		ResultSet result = statement.executeQuery();
 		result.next();
 
 		int ebasobiv = result.getInt("ebasobiv") + 1;
-		String uudis_id = Integer.toString(result.getInt("uudis_id"));
+		String article_id = Integer.toString(result.getInt("article_id"));
 
 		statement = connection
-				.prepareStatement("UPDATE kommentaarid SET ebasobiv = ? WHERE id = ?");
+				.prepareStatement("UPDATE comment SET ebasobiv = ? WHERE id = ?");
 		statement.setInt(1, ebasobiv);
 		statement.setInt(2, Integer.parseInt(comment_id));
 		statement.executeUpdate();
@@ -104,6 +104,6 @@ public class CommentController extends ApplicationController{
 		statement.close();
 		connection.close();
 
-		return redirect(routes.ArticleController.article(uudis_id));
+		return redirect(routes.ArticleController.article(article_id));
 	}
 }

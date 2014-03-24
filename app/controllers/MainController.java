@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import play.Logger;
+
 import play.db.DB;
 import play.mvc.Result;
 import views.html.main;
@@ -17,19 +19,19 @@ public class MainController extends ApplicationController{
 		Connection connection = DB.getConnection();
 		Statement statement = connection.createStatement();
 		ResultSet result = statement.executeQuery("Select * from " + sort + " limit 10;");
-
-		List<String> uudis = new ArrayList<String>();
+		
+		List<String> article = new ArrayList<String>();
 		while (result.next()) {
-			uudis.add(result.getString("id"));
-			uudis.add(result.getString("pealkiri"));
-			uudis.add(result.getString("sissejuhatus"));
+			article.add(result.getString("id"));
+			article.add(result.getString("title"));
+			article.add(result.getString("intro"));
 		}
 
 		result.close();
 		statement.close();
 		connection.close();
 
-		return ok(main.render(uudis));
+		return ok(main.render(article));
 	}
 	
 	public static Result maineditor(String sort) throws SQLException {
@@ -37,18 +39,18 @@ public class MainController extends ApplicationController{
 		Statement statement = connection.createStatement();
 		ResultSet result = statement.executeQuery("Select * from " + sort + " limit 10;");
 
-		List<String> uudis = new ArrayList<String>();
+		List<String> article = new ArrayList<String>();
 
 		while (result.next()) {
-			uudis.add(result.getString("id"));
-			uudis.add(result.getString("pealkiri"));
-			uudis.add(result.getString("sissejuhatus"));
+			article.add(result.getString("id"));
+			article.add(result.getString("title"));
+			article.add(result.getString("intro"));
 		}
 
 		result.close();
 		statement.close();
 		connection.close();
 
-		return ok(maineditor.render(uudis));
+		return ok(maineditor.render(article));
 	}
 }

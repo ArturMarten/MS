@@ -22,20 +22,20 @@ public class NewsletterController extends ApplicationController{
 	public static Result newslettereditor() throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection
-				.prepareStatement("Select * from uudistevoog");
+				.prepareStatement("Select * from newsletter");
 		ResultSet result = statement.executeQuery();
 		
 		ArrayList<ArrayList<String>> uudistevooAndmed = new ArrayList<>();
 		while (result.next()) {
 			ArrayList<String> rida = new ArrayList<String>();
 			rida.add(result.getString("id"));
-			rida.add(result.getString("nimi"));
+			rida.add(result.getString("name"));
 			rida.add(result.getString("email"));
-			rida.add(result.getString("teema1"));
-			rida.add(result.getString("teema2"));
-			rida.add(result.getString("teema3"));
-			rida.add(result.getString("teema4"));
-			rida.add(result.getString("teema5"));
+			rida.add(result.getString("topic1"));
+			rida.add(result.getString("topic2"));
+			rida.add(result.getString("topic3"));
+			rida.add(result.getString("topic4"));
+			rida.add(result.getString("topic5"));
 			uudistevooAndmed.add(rida);
 		}
 
@@ -49,7 +49,7 @@ public class NewsletterController extends ApplicationController{
 	public static Result addToNewsletter() throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection
-				.prepareStatement("Insert Into uudistevoog(nimi,email,teema1,teema2,teema3,teema4,teema5) Values(?,?,?,?,?,?,?)");
+				.prepareStatement("Insert Into newsletter(name,email,topic1,topic2,topic3,topic4,topic5) Values(?,?,?,?,?,?,?)");
 
 		DynamicForm data = Form.form().bindFromRequest();
 		String nimi = data.get("username");
@@ -95,12 +95,12 @@ public class NewsletterController extends ApplicationController{
 		return redirect(routes.NewsletterController.newsletter());
 	}
 
-	public static Result removeFromNewsletter(String uudistevoog_id)
+	public static Result removeFromNewsletter(String newsletter_id)
 			throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection
-				.prepareStatement("Delete from uudistevoog where id = ?");
-		statement.setInt(1, Integer.parseInt(uudistevoog_id));
+				.prepareStatement("Delete from newsletter where id = ?");
+		statement.setInt(1, Integer.parseInt(newsletter_id));
 		statement.executeUpdate();
 
 		statement.close();
