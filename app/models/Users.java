@@ -5,7 +5,7 @@ import javax.persistence.Id;
 
 import play.db.ebean.Model;
 
-@Entity(name="users")
+@Entity
 public class Users extends Model{
 	@Id
 	public int id;

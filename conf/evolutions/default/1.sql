@@ -45,9 +45,9 @@ create table newsletter (
 ;
 
 create table users (
-  id                        integer not null,
-  email                     varchar(255),
-  password                  varchar(255),
+  id                        integer default nextval('users_seq'::regclass) not null,
+  email                     varchar(100),
+  password                  varchar(200),
   constraint pk_users primary key (id))
 ;
 
