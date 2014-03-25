@@ -1,34 +1,54 @@
+
 body{
-    font-family: "Times New Roman",Georgia,Serif;
-    background-color: #ccc;
+	font-family: "Times New Roman",Georgia,Serif;
+    background-color: #E5E4D7;
+    margin-left: 12%;
+    margin-right: 12%;
 }
 #content {
-    margin-left: 12%;
-    margin-right: 12%;    
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #2C6700;
+	border-radius: 15px 15px;
 }
 
 #newsletter{
     float: right;
     margin-right: 1em;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    
+    margin-top: 4%;
+    margin-bottom: 1%;
+	padding: 1% 2% 1% 2%;
+	background-color: #92CD00;
+	border-radius: 10px;
+	font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
+
 #logisisse{
+	
     float: right;
-    padding-right: 12%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+	padding: 1% 2% 1% 2%;
+	margin-right: 8%;
+    margin-top: 4%;
+    margin-bottom: 1%;
+	background-color: #92CD00;
+	border-radius: 10px;
+	font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
+
 #teemad{
     align-items: center;
     font-size: 1.4em;
     width:100%;
-    border: 1em;
+	background-color: #92CD00;
+	margin-bottom: 1%;
+	border-radius: 5px 5px;
+	border: 2px solid #000000;
 }
 
+
 a{
+	text-decoration: none;
     color:black;
 }
 a:hover{
