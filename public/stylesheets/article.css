@@ -76,14 +76,16 @@ form{
     display: inline;
 }
 #kommentaarikast{
+	margin: 0% 1%;
   display : block;
-  width   : 70%;
+  width   : 96%;
   height  : 5em;
   resize  : none;
   overflow: auto;
 }
 
 #saada, #loeVeelKommentaare{
+	margin: 0% 1%;
   background   : #FFF;
   cursor       : pointer;
 }
@@ -149,4 +151,7 @@ article {
 	border-radius: 15px;
 }
 
+#nimiKommentaar {
+	margin: 0% 1%;
+}
     
