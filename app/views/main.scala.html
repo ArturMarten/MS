@@ -33,20 +33,20 @@
 			
 			<div id="wrap">
 				<div id="left_col">
-					@for(i <- 0 to uudis.size/3-1 by 2) {
+					@for(i <- 0 to uudis.size/4-1 by 2) {
 						<article>
-							<img id="ajaleht1" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt">
-							<h1><a href=/article/@uudis(i*3)>@uudis(i*3+1)</a></h1>
-							<p>@uudis(i*3+2)</p>
+							<img id="ajaleht1" src="../assets/images/article/@uudis(i*4+3)" alt="pilt"><br>
+							<h1><a href=/article/@uudis(i*4)>@uudis(i*4+1)</a></h1>
+							<p>@uudis(i*4+2)</p>
 						</article>
 					}
 				</div>
 				<div id="right_col">
-					@for(i <- 1 to uudis.size/3-1 by 2) {
+					@for(i <- 1 to uudis.size/4-1 by 2) {
 						<article>
-							<img id="ajaleht1" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt">
-							<h1><a href=/article/@uudis(i*3)>@uudis(i*3+1)</a></h1>
-							<p>@uudis(i*3+2)</p>
+							<img id="ajaleht1" src="../assets/images/article/@uudis(i*4+3)"  alt="pilt"><br>
+							<h1><a href=/article/@uudis(i*4)>@uudis(i*4+1)</a></h1>
+							<p>@uudis(i*4+2)</p>
 						</article>
 					}
 				</div>

@@ -23,6 +23,7 @@ public class MainController extends ApplicationController{
 			article.add(result.getString("id"));
 			article.add(result.getString("title"));
 			article.add(result.getString("intro"));
+			article.add(result.getString("image"));
 		}
 
 		result.close();
@@ -43,6 +44,7 @@ public class MainController extends ApplicationController{
 			article.add(result.getString("id"));
 			article.add(result.getString("title"));
 			article.add(result.getString("intro"));
+			article.add(result.getString("image"));
 		}
 
 		result.close();

@@ -1,13 +1,12 @@
 @(uudis: List[String])
 
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED"> 
 		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/maineditor.css")"/> 
-		<title>Avalehttoimetaja</title>
+		<title>Avaleht toimetaja</title>
    </head>
    
    <body>
@@ -37,24 +36,24 @@
 			
 			<div id="wrap">
 				<div id="left_col">
-					@for(i <- 0 to uudis.size/3-1 by 2) {
+					@for(i <- 0 to uudis.size/4-1 by 2) {
 						<article>
-							<img id="ajaleht1" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt"><br>
-							<a href="/articleeditor/@uudis(i*3)">Muuda uudist</a>
-							<a href="/deleteArticle/@uudis(i*3)">Kustuta uudis</a>
-							<h1><a href="/articleeditor/@uudis(i*3)">@uudis(i*3+1)</a></h1>
-							<p>@uudis(i*3+2)</p>
+							<img id="ajaleht1" src="../assets/images/article/@uudis(i*4+3)" alt="pilt"><br>
+							<a href="/articleeditor/@uudis(i*4)">Muuda uudist</a>
+							<a href="/deleteArticle/@uudis(i*4)">Kustuta uudis</a>
+							<h1><a href="/articleeditor/@uudis(i*4)">@uudis(i*4+1)</a></h1>
+							<p>@uudis(i*4+2)</p>
 						</article>
 					}
 				</div>
 				<div id="right_col">
-					@for(i <- 1 to uudis.size/3-1 by 2) {
+					@for(i <- 1 to uudis.size/4-1 by 2) {
 						<article>
-							<img id="ajaleht1" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt"><br>
-							<a href="/articleeditor/@uudis(i*3)">Muuda uudist</a>
-							<a href="/deleteArticle/@uudis(i*3)">Kustuta uudis</a>
-							<h1><a href="/articleeditor/@uudis(i*3)">@uudis(i*3+1)</a></h1>
-							<p>@uudis(i*3+2)</p>
+							<img id="ajaleht1" src="../assets/images/article/@uudis(i*4+3)" alt="pilt"><br>
+							<a href="/articleeditor/@uudis(i*4)">Muuda uudist</a>
+							<a href="/deleteArticle/@uudis(i*4)">Kustuta uudis</a>
+							<h1><a href="/articleeditor/@uudis(i*4)">@uudis(i*4+1)</a></h1>
+							<p>@uudis(i*4+2)</p>
 						</article>
 					}
 				</div>

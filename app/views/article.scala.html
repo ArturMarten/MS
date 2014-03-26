@@ -1,4 +1,4 @@
-@(uudiseandmed: List[String], kommentaariAndmed: java.util.ArrayList[java.util.ArrayList[String]])
+@(uudiseandmed: List[String], kommentaariAndmed: java.util.ArrayList[java.util.ArrayList[String]], image: String)
 
 <!DOCTYPE html>
 <html>
@@ -25,19 +25,19 @@
 			</table>
 			
 			<article>
-				<img id="proovipilt" src="@routes.Assets.at("images/ajaleht.jpg")" alt="pilt">
-				<h2 id="pealkiri">Artikli @uudiseandmed(1)</h2>
+				<img id="ajaleht1" src="@routes.Assets.at(image)" alt="pilt">
+				<h2 id="pealkiri">@uudiseandmed(1)</h2>
 				<section id="sissejuhatus">
 					@uudiseandmed(2)
 				</section>
 				<br>
-					<section id="teemaarendus">
-						@uudiseandmed(3)
-					</section>
+				<section id="teemaarendus">
+					@uudiseandmed(3)
+				</section>
 				<br>
-					<section id="kokkuvote">
-						@uudiseandmed(4)
-					</section>
+				<section id="kokkuvote">
+					@uudiseandmed(4)
+				</section>
 			</article>
 			<br>
 			
