@@ -80,10 +80,10 @@ a{
 	text-decoration: none;
 }
 a:hover{
-    color:white;
+    color:gray;
 }
 a:active{
-    color:blue;
+    color:lightgray;
 }
 #proovipilt{
     max-height: 40%;

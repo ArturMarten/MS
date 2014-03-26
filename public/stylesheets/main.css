@@ -51,10 +51,10 @@ a{
     color:black;
 }
 a:hover{
-    color:white;
+    color:gray;
 }
 a:active{
-    color:blue;
+    color:lightgray;
 }
 
 
