@@ -26,8 +26,6 @@ GET    /removeFromNewsletter/:uudistevoog_id  controllers.NewsletterController.r
 
 GET    /login                                 controllers.ApplicationController.login()
 
-POST   /login                                 controllers.ApplicationController.authenticate()
-
 POST   /upload/:article_id                    controllers.ArticleController.upload(article_id: String)
 
 # Map static resources from the /public folder to the /assets URL path
