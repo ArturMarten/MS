@@ -32,7 +32,7 @@ public class Article extends Model{
 	
 	public Date date;
 	
-	public byte[] image;
+	public String image;
 	
 	public int views;
 	
@@ -51,6 +51,7 @@ public class Article extends Model{
 		uudiseandmed.add(resultUudis.getString("intro"));
 		uudiseandmed.add(resultUudis.getString("body"));
 		uudiseandmed.add(resultUudis.getString("summary"));
+		uudiseandmed.add(resultUudis.getString("image"));
 
 		int vaatamisi = resultUudis.getInt("views") + 1;
 

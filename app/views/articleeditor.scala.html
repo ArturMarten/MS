@@ -1,4 +1,4 @@
-@(uudiseandmed: List[String], kommentaariAndmed: java.util.ArrayList[java.util.ArrayList[String]])
+@(uudiseandmed: List[String], kommentaariAndmed: java.util.ArrayList[java.util.ArrayList[String]], image: String)
 
 <!DOCTYPE html>
 <html>
@@ -30,15 +30,13 @@
 			</table>
 			
 			<article>
-				<form id="pildilaadimine" method="post">
-					<input type="text" id="failiaadress"
-						onfocus="if(this.value == 'Pildi URL') { this.value = ''; }"
-						value="Pildi URL" /> <input id="pildilaadimisenupp" type="button"
-						value="Lae pilt">
+				<img id="ajaleht1" src="@routes.Assets.at(image)" alt="pilt">
+				<br>
+				<form method="post" action="/upload/@uudiseandmed(0)" enctype="multipart/form-data">
+					<input type="file" name="picture">
+					<input type="submit" value="Lae pilt üles">
 				</form>
-				
-				<br> <br>
-				
+				<br>
 				<form method="post"  action="/saveArticle/@uudiseandmed(0)">
 					<b>Pealkiri</b>
 					<textarea id="title" name = "title">@uudiseandmed(1)</textarea>
