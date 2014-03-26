@@ -1,55 +1,83 @@
 body {
     font-family: "Times New Roman",Georgia,Serif;
-    background-color: #ccc;
+    background-color: #E5E4D7;
+    margin-left: 12%;
+    margin-right: 12%;
 }
 #content {
-    margin-left: 12%;
-    margin-right: 12%;    
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #81A594;
+	border-radius: 15px 15px;
+    padding: 0% 0% 1% 0%;
 }
 #uusUudis {
-    float: right;
-    margin-right: 1em;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    float: left;
+	padding: 1% 2% 1% 2%;
+	margin-right: 1%;
+    margin-top: 3%;
+    margin-bottom: 1%;
+	background-color: #FFF;
+	border-radius: 10px;
+	font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
 #newslettereditor {
-    float: right;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    float: left;
+	margin-left: 11%;
+    margin-right: 1%;
+    margin-top: 3%;
+    margin-bottom: 1%;
+	padding: 1% 2% 1% 2%;
+	background-color: #FFF;
+	border-radius: 10px;
+	font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 #kasutajatunnus {
     float: right;
-    margin-right: 1em;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-right: 1%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+	padding: 1% 2% 1% 2%;
+	background-color: #FFF;
+	border-radius: 10px;
+	font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 #logivalja{
     float: right;
-    margin-top: 5%;
-    margin-bottom: 5%;
+	padding: 1% 2% 1% 2%;
+	margin-right: 2%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+	background-color: #FFF;
+	border-radius: 10px;
+	font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
 #riba {
     float: right;
-    padding-right: 12%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    font-size: 0.8em;
+    padding-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
     white-space: nowrap;
+	width: 100%;
 }
 #teemad{
     align-items: center;
     font-size: 1.4em;
     width:100%;
-    border: 1em;
+	background-color: #FFF;
+	margin-bottom: 1%;
+	border-radius: 5px 5px;
+	border: 2px solid #000000;
 }
 #teema1,#teema2,#teema3,#teema4,#teema5 {
     text-align: center;
-    border: solid 1px black;
+    border: solid 0px black;
 }
 a{
     color:black;
+	text-decoration: none;
 }
 a:hover{
     color:white;
@@ -61,6 +89,14 @@ a:active{
     max-height: 40%;
     max-width: 50%;
 }
+
+article {
+	background-color: #FFF;
+	margin: 2% 2% 0% 2%;
+	padding: 2% 2%;
+	border-radius: 15px;
+}
+
 #title{
     display : block;
     width   : 70%;
