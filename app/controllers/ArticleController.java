@@ -1,7 +1,9 @@
 package controllers;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
 import models.Comment;
 import models.Article;
@@ -17,6 +20,7 @@ import play.Logger;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.db.DB;
+import play.mvc.Http;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
@@ -87,7 +91,7 @@ public class ArticleController extends ApplicationController{
 		return redirect(routes.MainController.maineditor("main_new"));
 	}
 	
-	public static Result upload(String article_id) throws SQLException {
+	public static Result upload(String article_id) throws SQLException, IOException {
 		MultipartFormData body = request().body().asMultipartFormData();
 		FilePart picture = body.getFile("picture");
 		if (picture != null) {
@@ -95,26 +99,39 @@ public class ArticleController extends ApplicationController{
 			String contentType = picture.getContentType(); 
 			Logger.debug(contentType.toString());
 			File file = picture.getFile();
+			
+			InputStream isFile = new FileInputStream(file);
+			byte[] byteFile = IOUtils.toByteArray(isFile);
+			
 			Connection connection = DB.getConnection();
 			PreparedStatement statement = connection.prepareStatement("UPDATE article SET image = ? WHERE id = ?");
-			statement.setString(1,fileName);
+			
+			statement.setBytes(1,byteFile);
 			statement.setInt(2, Integer.parseInt(article_id));
 			statement.executeUpdate();
+			
 			statement.close();
 			connection.close();
-			try {
-				FileUtils.moveFile(file, new File("public/images/article", fileName));
-				return redirect(routes.ArticleController.articleeditor(article_id));
-				}
-			catch (IOException e) {
-				Logger.debug("Problem operating on filesystem");
-				}
 			}
 		else{
 			flash("error", "Missing file");
-			Logger.debug("Problem operating on filesystem");
 			return redirect(routes.ArticleController.articleeditor(article_id));    
 			}
 		return redirect(routes.ArticleController.articleeditor(article_id));
 		}
+	public static Result getImage(String article_id) throws SQLException, IOException {
+		Connection connection = DB.getConnection();
+		PreparedStatement statement = connection.prepareStatement("SELECT image FROM article WHERE id = ?");
+		statement.setInt(1, Integer.parseInt(article_id));
+		ResultSet result = statement.executeQuery();
+		result.next();
+		
+		byte[] byteFile = result.getBytes("image");
+		File newFile = new File("pilt.png");
+		FileUtils.writeByteArrayToFile(newFile, byteFile);
+		
+		return redirect(routes.ArticleController.articleeditor(article_id));
+	}
+	
+	
 }
