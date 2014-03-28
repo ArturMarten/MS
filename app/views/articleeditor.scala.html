@@ -1,4 +1,4 @@
-@(uudiseandmed: List[String], kommentaariAndmed: java.util.ArrayList[java.util.ArrayList[String]], image: String)
+@(articleData: List[String], commentData: java.util.ArrayList[java.util.ArrayList[String]])
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
 	
 	<body>
 		<div id="riba">
-			<a id="logivalja" href="/article/@uudiseandmed(0)">Logi välja</a>
+			<a id="logivalja" href="/article/@articleData(0)">Logi välja</a>
 			<p id="kasutajatunnus">Nimi Siia</p><br>
 			<a id="newslettereditor" href="/newslettereditor">Halda uudiskirju</a>
 			<a id="uusUudis" href="/newArticle">Uus uudis</a>
@@ -30,22 +30,22 @@
 			</table>
 			
 			<article>
-				<img id="ajaleht1" src="@routes.Assets.at(image)" alt="pilt">
+				<img id="ajaleht1" src="/getImage/@articleData(0)" alt="pilt">
 				<br>
-				<form method="post" action="/upload/@uudiseandmed(0)" enctype="multipart/form-data">
-					<input type="file" name="picture">
+				<form method="post" action="/uploadImage/@articleData(0)" enctype="multipart/form-data">
+					<input type="file" name="image">
 					<input type="submit" value="Lae pilt üles">
 				</form>
 				<br>
-				<form method="post"  action="/saveArticle/@uudiseandmed(0)">
+				<form method="post"  action="/saveArticle/@articleData(0)">
 					<b>Pealkiri</b>
-					<textarea id="title" name = "title">@uudiseandmed(1)</textarea>
+					<textarea id="title" name = "title">@articleData(1)</textarea>
 					<b>Sissejuhatus</b>
-					<textarea id="intro" name = "intro">@uudiseandmed(2)</textarea>
+					<textarea id="intro" name = "intro">@articleData(2)</textarea>
 					<b>Teemaarendus</b>
-					<textarea id="body" name = "body">@uudiseandmed(3)</textarea>
+					<textarea id="body" name = "body">@articleData(3)</textarea>
 					<b>Kokkuvõte</b>
-					<textarea id="summary" name = "summary">@uudiseandmed(4)</textarea>
+					<textarea id="summary" name = "summary">@articleData(4)</textarea>
 					<input id="save" type="submit" value="Salvesta muudatused">
 				</form>
 			</article>
@@ -54,18 +54,18 @@
 			<input id="loeVeelKommentaare" type="button"
 				value="Redigeeri kommentaare">
 			<div id="commentsBody" class="commentsBody">
-			@for(i <- 0 until kommentaariAndmed.size()) {
+			@for(i <- 0 until commentData.size()) {
 				<div class="comment">
 					<div class="muuu">
-						<div class="nimi"> @kommentaariAndmed(i)(1) </div>
-						<div class="email"> @kommentaariAndmed(i)(2) </div>
-						<div class="kuupaev"> @kommentaariAndmed(i)(4) </div>
-						<form action="/deleteComment/@kommentaariAndmed(i)(0)" method="GET">
+						<div class="nimi"> @commentData(i)(1) </div>
+						<div class="email"> @commentData(i)(2) </div>
+						<div class="kuupaev"> @commentData(i)(4) </div>
+						<form action="/deleteComment/@commentData(i)(0)" method="GET">
 							<input class="kustutaKommentaar" type="submit" value="Kustuta kommentaar" >
 						</form>	
-						<p>Like @kommentaariAndmed(i)(3)</p><br>
+						<p>Like @commentData(i)(3)</p><br>
 					</div>
-					<div class="sisu"> @kommentaariAndmed(i)(5) </div>
+					<div class="sisu"> @commentData(i)(5) </div>
 				</div>
 			}
 			</div>

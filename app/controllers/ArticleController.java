@@ -16,11 +16,9 @@ import org.apache.commons.io.IOUtils;
 
 import models.Comment;
 import models.Article;
-import play.Logger;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.db.DB;
-import play.mvc.Http;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
@@ -31,13 +29,13 @@ public class ArticleController extends ApplicationController{
 	public static Result article(String article_id) throws SQLException {
 		List<String> uudiseandmed = Article.show(article_id);
 		ArrayList<ArrayList<String>> kommentaar = Comment.show(article_id);
-		return ok(article.render(uudiseandmed, kommentaar, "images/article/"+uudiseandmed.get(5)));
+		return ok(article.render(uudiseandmed, kommentaar));
 	}
 	
 	public static Result articleeditor(String article_id) throws SQLException {
 		List<String> uudiseandmed = Article.show(article_id);
 		ArrayList<ArrayList<String>> kommentaar = Comment.show(article_id);
-		return ok(articleeditor.render(uudiseandmed, kommentaar, "images/article/"+uudiseandmed.get(5)));
+		return ok(articleeditor.render(uudiseandmed, kommentaar));
 	}
 
 	public static Result newArticle() throws SQLException{
@@ -91,15 +89,11 @@ public class ArticleController extends ApplicationController{
 		return redirect(routes.MainController.maineditor("main_new"));
 	}
 	
-	public static Result upload(String article_id) throws SQLException, IOException {
+	public static Result uploadImage(String article_id) throws SQLException, IOException {
 		MultipartFormData body = request().body().asMultipartFormData();
-		FilePart picture = body.getFile("picture");
-		if (picture != null) {
-			String fileName = picture.getFilename();
-			String contentType = picture.getContentType(); 
-			Logger.debug(contentType.toString());
-			File file = picture.getFile();
-			
+		FilePart image = body.getFile("image");
+		if (image != null) {
+			File file = image.getFile();
 			InputStream isFile = new FileInputStream(file);
 			byte[] byteFile = IOUtils.toByteArray(isFile);
 			
@@ -112,12 +106,12 @@ public class ArticleController extends ApplicationController{
 			
 			statement.close();
 			connection.close();
+			return redirect(routes.ArticleController.articleeditor(article_id));
 			}
 		else{
 			flash("error", "Missing file");
 			return redirect(routes.ArticleController.articleeditor(article_id));    
 			}
-		return redirect(routes.ArticleController.articleeditor(article_id));
 		}
 	public static Result getImage(String article_id) throws SQLException, IOException {
 		Connection connection = DB.getConnection();
@@ -127,11 +121,12 @@ public class ArticleController extends ApplicationController{
 		result.next();
 		
 		byte[] byteFile = result.getBytes("image");
-		File newFile = new File("pilt.png");
-		FileUtils.writeByteArrayToFile(newFile, byteFile);
+		File image = new File("image"+article_id+".jpg");
+		FileUtils.writeByteArrayToFile(image, byteFile);
 		
-		return redirect(routes.ArticleController.articleeditor(article_id));
+		statement.close();
+		connection.close();
+		
+		return ok(image);
 	}
-	
-	
 }

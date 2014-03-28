@@ -1,4 +1,4 @@
-@(uudistevooAndmed : java.util.ArrayList[java.util.ArrayList[String]])
+@(newsletterData : java.util.ArrayList[java.util.ArrayList[String]])
 
 <!DOCTYPE html>
 <html>
@@ -27,16 +27,16 @@
 					<th>Teema5</th>
 					<th>Kustuta</th>
 				</tr>
-				@for(i <- 0 until uudistevooAndmed.size()){
+				@for(i <- 0 until newsletterData.size()){
 				<tr>
-					<td>@uudistevooAndmed(i)(1)</td>
-					<td>@uudistevooAndmed(i)(2)</td>                            
-					<td>@uudistevooAndmed(i)(3)</td>
-					<td>@uudistevooAndmed(i)(4)</td>
-					<td>@uudistevooAndmed(i)(5)</td>
-					<td>@uudistevooAndmed(i)(6)</td>
-					<td>@uudistevooAndmed(i)(7)</td>
-					<td><form action="/removeFromNewsletter/@uudistevooAndmed(i)(0)" method="GET"> 
+					<td>@newsletterData(i)(1)</td>
+					<td>@newsletterData(i)(2)</td>                            
+					<td>@newsletterData(i)(3)</td>
+					<td>@newsletterData(i)(4)</td>
+					<td>@newsletterData(i)(5)</td>
+					<td>@newsletterData(i)(6)</td>
+					<td>@newsletterData(i)(7)</td>
+					<td><form action="/removeFromNewsletter/@newsletterData(i)(0)" method="GET"> 
 						<input type="submit" value="Kustuta">
 					</form></td>
 				</tr>
