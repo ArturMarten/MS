@@ -97,8 +97,8 @@ td, th {
     border: solid 0px black;
 }
 
-#ajaleht1,#ajaleht2,#ajaleht3, #ajaleht4{
-   width: 60%;
+#articleImage{
+   width: 80%;
 }
 h1{
     font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;

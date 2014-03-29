@@ -38,7 +38,7 @@
 				<div id="left_col">
 					@for(i <- 0 to articleData.size/3-1 by 2) {
 						<article>
-							<img id="ajaleht1" src="/getImage/@articleData(i*3)" alt="pilt"><br>
+							<img id="articleImage" src="/getImage/@articleData(i*3)" alt="pilt"><br>
 							<a href="/articleeditor/@articleData(i*3)">Muuda uudist</a>
 							<a href="/deleteArticle/@articleData(i*3)">Kustuta uudis</a>
 							<h1><a href="/articleeditor/@articleData(i*3)">@articleData(i*3+1)</a></h1>
@@ -49,7 +49,7 @@
 				<div id="right_col">
 					@for(i <- 1 to articleData.size/3-1 by 2) {
 						<article>
-							<img id="ajaleht1" src="/getImage/@articleData(i*3)" alt="pilt"><br>
+							<img id="articleImage" src="/getImage/@articleData(i*3)" alt="pilt"><br>
 							<a href="/articleeditor/@articleData(i*3)">Muuda uudist</a>
 							<a href="/deleteArticle/@articleData(i*3)">Kustuta uudis</a>
 							<h1><a href="/articleeditor/@articleData(i*3)">@articleData(i*3+1)</a></h1>

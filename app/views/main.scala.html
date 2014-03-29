@@ -11,6 +11,7 @@
 	
 	<body>
 		<a id="logisisse" href="/login">Logi sisse </a>
+		<a id="register" href="/register">Registreeri </a>
 		<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
 		<div id="content">
 			<table id="teemad">
@@ -35,7 +36,7 @@
 				<div id="left_col">
 					@for(i <- 0 to articleData.size/3-1 by 2) {
 						<article>
-							<img id="ajaleht1" src="/getImage/@articleData(i*3)" alt="pilt"><br>
+							<img id="articleImage" src="/getImage/@articleData(i*3)" alt="pilt"><br>
 							<h1><a href=/article/@articleData(i*3)>@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
 						</article>
@@ -44,7 +45,7 @@
 				<div id="right_col">
 					@for(i <- 1 to articleData.size/3-1 by 2) {
 						<article>
-							<img id="ajaleht1" src="/getImage/@articleData(i*3)"  alt="pilt"><br>
+							<img id="articleImage" src="/getImage/@articleData(i*3)"  alt="pilt"><br>
 							<h1><a href=/article/@articleData(i*3)>@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
 						</article>
