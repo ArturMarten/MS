@@ -4,6 +4,7 @@ import com.avaje.ebean.Ebean;
 
 import models.Users;
 import play.mvc.Controller;
+
 import play.mvc.Result;
 import views.html.login;
 import views.html.register;
@@ -57,14 +58,21 @@ public class ApplicationController extends Controller {
 	
 	public static Result registerForm() {
 		Form<Register> registerForm = form(Register.class).bindFromRequest();
+		String email = registerForm.get().email;
+		String password = registerForm.get().password;
 		if (registerForm.hasErrors()) {
 			return badRequest(register.render(registerForm));
 		} 
 		else {
-			Users user = new Users(registerForm.get().email,registerForm.get().password);
-			Ebean.save(user);
-			session().put("email", registerForm.get().email);
-			return redirect(routes.MainController.maineditor("main_new"));
+			if(email.equals("")||password.equals("")){
+				return redirect(routes.ApplicationController.register());
+			}
+			else{
+				Users user = new Users(email,password);
+				Ebean.save(user);
+				session().put("email", registerForm.get().email);
+				return redirect(routes.MainController.maineditor("main_new"));
+			}
 		}
 	}
 }
