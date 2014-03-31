@@ -35,18 +35,17 @@
 				</tr>
 			</table>
 			
-		<!--Popup-->
+		<!--Login popup-->
         <div class="popup">
         	<button href="#" class="sulge_popup">Close</button>
-            <form>
 			@helper.form(routes.ApplicationController.authenticate) {
 				<p><input type="email" name="email" placeholder="Email"></p>
 				<p><input type="password" name="password" placeholder="Parool"></p>
 				<p><button type="submit">Login</button> </p>
 			}
-            </form>
         </div>
-		<!--Popup läbi-->
+		<!--popup-->
+		
 			
 			<div id="wrap">
 				<div id="left_col">
