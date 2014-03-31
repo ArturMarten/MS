@@ -37,11 +37,13 @@
 			
 		<!--Popup-->
         <div class="popup">
-        	<a href="#" class="sulge_popup">CLOSE</a>
+        	<button href="#" class="sulge_popup">Close</button>
             <form>
-            	<p><span class="popup_kiri">Username</span> <input name="" type="text" /></p>
-                <p><span class="popup_kiri">Password</span> <input name="" type="password" /></p>
-                <p><input name="" type="button" value="Login" /></p>
+			@helper.form(routes.ApplicationController.authenticate) {
+				<p><input type="email" name="email" placeholder="Email"></p>
+				<p><input type="password" name="password" placeholder="Parool"></p>
+				<p><button type="submit">Login</button> </p>
+			}
             </form>
         </div>
 		<!--Popup läbi-->

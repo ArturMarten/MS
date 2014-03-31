@@ -16,16 +16,9 @@
 }
 
 .sulge_popup{
-	font-size: 0.9em;
-	font-weight: bold; 
-	color: #000; 
 	position: absolute; 
 	bottom: 12%; 
 	right: 5%; 
-	background-color: #FFF;
-	border-radius: 5px;
-	padding: 1%;
-	border: 1px solid;
 	
 }
 
