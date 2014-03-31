@@ -2,30 +2,38 @@
 /* CSS Document */
 
 .popup{
-	padding: 10px 10px 10px; 
+	padding: 0% 1%; 
 	display: none; 
-	background: #333; 
+	background: #81A594; 
+	border: 1px solid;
 	z-index: 10;
 	
 	position: absolute; 
-	right: 8px;
+	right: 16%;
+	top: 1%;
 	   
-	border-top-left-radius:10px;
-	border-top-right-radius:10px;
-	border-bottom-left-radius:10px;
-	border-bottom-right-radius:10px;
+	border-radius: 10px;
 }
 
 .sulge_popup{
+	font-size: 0.9em;
 	font-weight: bold; 
-	color: #F00; 
+	color: #000; 
 	position: absolute; 
-	bottom: 25px; 
-	right: 15px; 
+	bottom: 12%; 
+	right: 5%; 
+	background-color: #FFF;
+	border-radius: 5px;
+	padding: 1%;
+	border: 1px solid;
+	
 }
 
 .popup_kiri{
 	padding : 5px;
 	font-weight: bold; 
-	color: #FFF;
+	color: #000;
+	font-family: Arial;
+	background-color: #FFF;
+	border-radius: 5px;
 }

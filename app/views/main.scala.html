@@ -8,11 +8,12 @@
 		<title>Avaleht</title>
 		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")"/> 
 		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/popup.css")"/>
+		<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
 		<script src="/assets/javascripts/login-popup.js" type="text/javascript" /></script>
 	</head>
 	
 	<body>
-		<a id="logisisse" href="/login">Logi sisse </a>
+		<a id="logisisse" href="#" class="popup_button">Logi sisse </a>
 		<a id="register" href="/register">Registreeri </a>
 		<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
 		<div id="content">
@@ -34,11 +35,23 @@
 				</tr>
 			</table>
 			
+		<!--Popup-->
+        <div class="popup">
+        	<a href="#" class="sulge_popup">CLOSE</a>
+            <form>
+            	<p><span class="popup_kiri">Username</span> <input name="" type="text" /></p>
+                <p><span class="popup_kiri">Password</span> <input name="" type="password" /></p>
+                <p><input name="" type="button" value="Login" /></p>
+            </form>
+        </div>
+		<!--Popup läbi-->
+			
 			<div id="wrap">
 				<div id="left_col">
 					@for(i <- 0 to articleData.size/3-1 by 2) {
 						<article>
-							<img id="articleImage" src="/getImage/@articleData(i*3)" alt="pilt"><br>
+							<a href=/article/@articleData(i*3)><img id="articleImage" src="/getImage/@articleData(i*3)" alt="pilt"></a>
+							<br>
 							<h1><a href=/article/@articleData(i*3)>@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
 						</article>
@@ -47,7 +60,8 @@
 				<div id="right_col">
 					@for(i <- 1 to articleData.size/3-1 by 2) {
 						<article>
-							<img id="articleImage" src="/getImage/@articleData(i*3)"  alt="pilt"><br>
+							<a href=/article/@articleData(i*3)><img id="articleImage" src="/getImage/@articleData(i*3)"  alt="pilt"></a>
+							<br>
 							<h1><a href=/article/@articleData(i*3)>@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
 						</article>
