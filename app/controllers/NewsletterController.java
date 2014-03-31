@@ -24,25 +24,25 @@ public class NewsletterController extends ApplicationController{
 		PreparedStatement statement = connection.prepareStatement("SELECT * FROM newsletter");
 		ResultSet result = statement.executeQuery();
 		
-		ArrayList<ArrayList<String>> uudistevooAndmed = new ArrayList<>();
+		ArrayList<ArrayList<String>> newsletterData = new ArrayList<>();
 		while (result.next()) {
-			ArrayList<String> rida = new ArrayList<String>();
-			rida.add(result.getString("id"));
-			rida.add(result.getString("name"));
-			rida.add(result.getString("email"));
-			rida.add(result.getString("topic1"));
-			rida.add(result.getString("topic2"));
-			rida.add(result.getString("topic3"));
-			rida.add(result.getString("topic4"));
-			rida.add(result.getString("topic5"));
-			uudistevooAndmed.add(rida);
+			ArrayList<String> line = new ArrayList<String>();
+			line.add(result.getString("id"));
+			line.add(result.getString("name"));
+			line.add(result.getString("email"));
+			line.add(result.getString("topic1"));
+			line.add(result.getString("topic2"));
+			line.add(result.getString("topic3"));
+			line.add(result.getString("topic4"));
+			line.add(result.getString("topic5"));
+			newsletterData.add(line);
 		}
 
 		statement.close();
 		result.close();
 		connection.close();
 		
-		return ok(newslettereditor.render(uudistevooAndmed));
+		return ok(newslettereditor.render(newsletterData));
 	}
 	
 	public static Result addToNewsletter() throws SQLException {

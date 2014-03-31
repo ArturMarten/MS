@@ -32,7 +32,7 @@ public class Article extends Model{
 	
 	public Date date;
 	
-	public String image;
+	public byte[] image;
 	
 	public int views;
 	

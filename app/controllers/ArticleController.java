@@ -1,7 +1,9 @@
 package controllers;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
 import models.Comment;
 import models.Article;
-import play.Logger;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.db.DB;
@@ -27,13 +29,13 @@ public class ArticleController extends ApplicationController{
 	public static Result article(String article_id) throws SQLException {
 		List<String> uudiseandmed = Article.show(article_id);
 		ArrayList<ArrayList<String>> kommentaar = Comment.show(article_id);
-		return ok(article.render(uudiseandmed, kommentaar, "images/article/"+uudiseandmed.get(5)));
+		return ok(article.render(uudiseandmed, kommentaar));
 	}
 	
 	public static Result articleeditor(String article_id) throws SQLException {
 		List<String> uudiseandmed = Article.show(article_id);
 		ArrayList<ArrayList<String>> kommentaar = Comment.show(article_id);
-		return ok(articleeditor.render(uudiseandmed, kommentaar, "images/article/"+uudiseandmed.get(5)));
+		return ok(articleeditor.render(uudiseandmed, kommentaar));
 	}
 
 	public static Result newArticle() throws SQLException{
@@ -87,34 +89,44 @@ public class ArticleController extends ApplicationController{
 		return redirect(routes.MainController.maineditor("main_new"));
 	}
 	
-	public static Result upload(String article_id) throws SQLException {
+	public static Result uploadImage(String article_id) throws SQLException, IOException {
 		MultipartFormData body = request().body().asMultipartFormData();
-		FilePart picture = body.getFile("picture");
-		if (picture != null) {
-			String fileName = picture.getFilename();
-			String contentType = picture.getContentType(); 
-			Logger.debug(contentType.toString());
-			File file = picture.getFile();
+		FilePart image = body.getFile("image");
+		if (image != null) {
+			File file = image.getFile();
+			InputStream isFile = new FileInputStream(file);
+			byte[] byteFile = IOUtils.toByteArray(isFile);
+			
 			Connection connection = DB.getConnection();
 			PreparedStatement statement = connection.prepareStatement("UPDATE article SET image = ? WHERE id = ?");
-			statement.setString(1,fileName);
+			
+			statement.setBytes(1,byteFile);
 			statement.setInt(2, Integer.parseInt(article_id));
 			statement.executeUpdate();
+			
 			statement.close();
 			connection.close();
-			try {
-				FileUtils.moveFile(file, new File("public/images/article", fileName));
-				return redirect(routes.ArticleController.articleeditor(article_id));
-				}
-			catch (IOException e) {
-				Logger.debug("Problem operating on filesystem");
-				}
+			return redirect(routes.ArticleController.articleeditor(article_id));
 			}
 		else{
 			flash("error", "Missing file");
-			Logger.debug("Problem operating on filesystem");
 			return redirect(routes.ArticleController.articleeditor(article_id));    
 			}
-		return redirect(routes.ArticleController.articleeditor(article_id));
 		}
+	public static Result getImage(String article_id) throws SQLException, IOException {
+		Connection connection = DB.getConnection();
+		PreparedStatement statement = connection.prepareStatement("SELECT image FROM article WHERE id = ?");
+		statement.setInt(1, Integer.parseInt(article_id));
+		ResultSet result = statement.executeQuery();
+		result.next();
+		
+		byte[] byteFile = result.getBytes("image");
+		File image = new File("image"+article_id+".jpg");
+		FileUtils.writeByteArrayToFile(image, byteFile);
+		
+		statement.close();
+		connection.close();
+		
+		return ok(image);
+	}
 }
