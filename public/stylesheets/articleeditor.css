@@ -194,3 +194,8 @@ p {
     word-wrap: break-word;
     position: relative;
 }
+
+img {
+	width:92%;
+	margin:3% 0% 0% 4%;
+}
