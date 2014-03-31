@@ -109,7 +109,6 @@ public class ArticleController extends ApplicationController{
 			return redirect(routes.ArticleController.articleeditor(article_id));
 			}
 		else{
-			flash("error", "Missing file");
 			return redirect(routes.ArticleController.articleeditor(article_id));    
 			}
 		}
@@ -121,7 +120,7 @@ public class ArticleController extends ApplicationController{
 		result.next();
 		
 		byte[] byteFile = result.getBytes("image");
-		File image = new File("image"+article_id+".jpg");
+		File image = new File("tmp/image"+article_id+".jpg");
 		FileUtils.writeByteArrayToFile(image, byteFile);
 		
 		statement.close();
