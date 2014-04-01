@@ -8,14 +8,18 @@
 		<title>Registreerumine</title>    
 	</head>
 	<body>
-		<a id="avalehele" href="/main/main_new">Avalehele</a>
-		<h1>Registreeri</h1>
-		@helper.form(routes.ApplicationController.registerForm, 'id -> "sign-up-form") {
-			<input type="email" name="email" placeholder="Email" /><br>
-			<input type="password" name="password" placeholder="Parool" /><br>
-			<input type="first_name" name="first_name" placeholder="Eesnimi" /><br>
-			<input type="last_name" name="last_name" placeholder="Perekonnanimi" /><br>
-			<input type="submit" value="Kinnita">
-		}
+		<div id="kast1">
+			<div id="kast2">
+				<a id="avalehele" href="/main/main_new">Avalehele</a>
+				<h1>Registreeri</h1>
+				@helper.form(routes.ApplicationController.registerForm, 'id -> "sign-up-form") {
+					<input type="email" name="email" placeholder="Email" /><br>
+					<input type="password" name="password" placeholder="Parool" /><br>
+					<input type="first_name" name="first_name" placeholder="Eesnimi" /><br>
+					<input type="last_name" name="last_name" placeholder="Perekonnanimi" /><br>
+					<input type="submit" value="Kinnita">
+				}
+			</div>
+		</div>				
 	</body>
 </html>

@@ -9,39 +9,43 @@
 		<title>Uudiskiritoimetaja</title>    
 	</head>
 	<body>
-		<div id="riba">
-			<p>Nimi Siia</p>
-			<a href="/main/main_new">Logi välja</a>
-		</div>
-		<div id="content">
-		<a id="avalehele" href="/maineditor/main_new">Avalehele</a>
-		<h1>Uudistevoog</h1>
-			<table>
-				<tr id="firstRow">
-					<th>Nimi</th>
-					<th>E-mail</th>
-					<th>Teema1</th>
-					<th>Teema2</th>
-					<th>Teema3</th>
-					<th>Teema4</th>
-					<th>Teema5</th>
-					<th>Kustuta</th>
-				</tr>
-				@for(i <- 0 until newsletterData.size()){
-				<tr>
-					<td>@newsletterData(i)(1)</td>
-					<td>@newsletterData(i)(2)</td>                            
-					<td>@newsletterData(i)(3)</td>
-					<td>@newsletterData(i)(4)</td>
-					<td>@newsletterData(i)(5)</td>
-					<td>@newsletterData(i)(6)</td>
-					<td>@newsletterData(i)(7)</td>
-					<td><form action="/removeFromNewsletter/@newsletterData(i)(0)" method="GET"> 
-						<input type="submit" value="Kustuta">
-					</form></td>
-				</tr>
-				}
-			</table>
-		</div>
+	  <div id="kast1">
+		  <div id="kast2">
+			<div id="riba">
+				<p>Nimi Siia</p>
+				<a id="logivälja" href="/main/main_new">Logi välja</a>
+			</div>
+			<div id="content">
+			<a id="avalehele" href="/maineditor/main_new">Avalehele</a>
+			<h1>Uudistevoog</h1>
+				<table>
+					<tr id="firstRow">
+						<th>Nimi</th>
+						<th>E-mail</th>
+						<th>Teema1</th>
+						<th>Teema2</th>
+						<th>Teema3</th>
+						<th>Teema4</th>
+						<th>Teema5</th>
+						<th>Kustuta</th>
+					</tr>
+					@for(i <- 0 until newsletterData.size()){
+					<tr>
+						<td>@newsletterData(i)(1)</td>
+						<td>@newsletterData(i)(2)</td>                            
+						<td>@newsletterData(i)(3)</td>
+						<td>@newsletterData(i)(4)</td>
+						<td>@newsletterData(i)(5)</td>
+						<td>@newsletterData(i)(6)</td>
+						<td>@newsletterData(i)(7)</td>
+						<td><form action="/removeFromNewsletter/@newsletterData(i)(0)" method="GET"> 
+							<input type="submit" value="Kustuta">
+						</form></td>
+					</tr>
+					}
+				</table>
+			</div>
+		  </div>
+	  </div>
 	</body>
 </html>

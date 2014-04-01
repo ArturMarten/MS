@@ -11,8 +11,12 @@ body {
 h1{
     align-self: center;
 }
-#avalehele{
-    float:left;
+#avalehele {
+    margin-top: 4%;
+    margin-bottom: 1%;
+	padding: 1% 2% 1% 2%;
+	border-radius: 10px;
+	font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 table {
     margin-left: auto;
@@ -29,4 +33,27 @@ table, td {
 }
 #allFields {
     text-align: center;
+}
+a {
+	text-decoration: none;
+    color:black;
+}
+a:hover{
+    color:gray;
+}
+a:active{
+    color:lightgray;
+}
+
+#kast1 {
+	background-color: #81A594;
+	padding: 4%;
+	border-radius: 15px;
+}
+
+#kast2 {
+	background-color: #FFF;
+	padding: 8%;
+	margin: 1% 1%;
+	border-radius: 15px;
 }
