@@ -8,12 +8,16 @@
 		<title>Login</title>    
 	</head>
 	<body>
+  <div id="kast1">
+	  <div id="kast2">
 		<a id="avalehele" href="/main/main_new">Avalehele</a>
 		<h1>Login</h1>
-		@helper.form(routes.ApplicationController.authenticate) {
-			<p><input type="email" name="email" placeholder="Email" value="@form("email").value"></p>
+		<form action="/login" method="POST">			
+			<p><input type="email" name="email" placeholder="Email" value=""></p>
 			<p><input type="password" name="password" placeholder="Parool"></p>
 			<p><button type="submit">Login</button> </p>
-		}
-	</body>
+		</form>
+	  </div>
+  </div>
+</body>
 </html>

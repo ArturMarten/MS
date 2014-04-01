@@ -149,9 +149,11 @@ form{
     font-size: 0.8em;
 }
 .comment{
-    margin-bottom: 0.5em;
-    border: solid #036;
     border-width: 3px;
+	background-color: #FFF;
+	margin: 0% 1%;
+	padding: 1% 1%;
+	border-radius: 10px;
 }
 .nimi {
     padding-right: 0.9em;
