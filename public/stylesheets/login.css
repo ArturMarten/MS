@@ -13,7 +13,6 @@ form {
 }
 
 #avalehele {
-    margin-right: 1em;
     margin-top: 4%;
     margin-bottom: 1%;
 	padding: 1% 2% 1% 2%;
@@ -32,3 +31,15 @@ a:active{
     color:lightgray;
 }
 
+#kast1 {
+	background-color: #81A594;
+	padding: 4%;
+	border-radius: 15px;
+}
+
+#kast2 {
+	background-color: #FFF;
+	padding: 8%;
+	margin: 1% 1%;
+	border-radius: 15px;
+}
