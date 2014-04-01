@@ -6,7 +6,7 @@ create sequence comment_seq;
 
 create sequence newsletter_seq;
 
-create sequence users_seq;
+create sequence user_seq;
 
 create table article (
   id                        integer default nextval('article_seq'::regclass) not null,
@@ -45,9 +45,11 @@ create table newsletter (
 ;
 
 create table users (
-  id                        integer default nextval('users_seq'::regclass) not null,
+  id                        integer default nextval('user_seq'::regclass) not null,
   email                     varchar(100),
-  password                  varchar(200),
+  password                  varchar(100),
+  first_name                varchar(100),
+  last_name                 varchar(100),
   constraint pk_users primary key (id))
 ;
 
@@ -67,4 +69,4 @@ drop sequence if exists comment_seq;
 
 drop sequence if exists newsletter_seq;
 
-drop sequence if exists users_seq;
+drop sequence if exists user_seq;

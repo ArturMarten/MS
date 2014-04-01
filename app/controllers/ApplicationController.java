@@ -44,6 +44,8 @@ public class ApplicationController extends Controller {
 	public static class Register {
 		public String email;
 		public String password;
+		public String first_name;
+		public String last_name;
 	}
 	
 	public static Result register() {
@@ -60,6 +62,8 @@ public class ApplicationController extends Controller {
 		Form<Register> registerForm = form(Register.class).bindFromRequest();
 		String email = registerForm.get().email;
 		String password = registerForm.get().password;
+		String first_name = registerForm.get().first_name;
+		String last_name = registerForm.get().last_name;
 		if (registerForm.hasErrors()) {
 			return badRequest(register.render(registerForm));
 		} 
@@ -68,7 +72,7 @@ public class ApplicationController extends Controller {
 				return redirect(routes.ApplicationController.register());
 			}
 			else{
-				Users user = new Users(email,password);
+				Users user = new Users(email,password,first_name,last_name);
 				Ebean.save(user);
 				session().put("email", registerForm.get().email);
 				return redirect(routes.MainController.maineditor("main_new"));
