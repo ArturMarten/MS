@@ -84,9 +84,6 @@ td, th {
     border: solid 0px black;
 }
 
-#articleImage{
-   width: 80%;
-}
 h1{
     font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
@@ -117,8 +114,7 @@ article {
 	
 
 }
-#articleImage {
+.articleImage {
 	margin: 3% 0% 0% 8%;
-	border-radius: 5px;
 	width:83%;
 }

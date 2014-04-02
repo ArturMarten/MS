@@ -37,7 +37,7 @@
 			
 		<!--Login popup-->
         <div class="popup">
-        	<button href="#" class="sulge_popup">Close</button>
+        	<button data-href="#" class="sulge_popup">Close</button>
 			@helper.form(routes.ApplicationController.authenticate) {
 				<p><input type="email" name="email" placeholder="Email"></p>
 				<p><input type="password" name="password" placeholder="Parool"></p>
@@ -51,7 +51,7 @@
 				<div id="left_col">
 					@for(i <- 0 to articleData.size/3-1 by 2) {
 						<article>
-							<a href=/article/@articleData(i*3)><img id="articleImage" src="/getImage/@articleData(i*3)" alt="pilt"></a>
+							<a href=/article/@articleData(i*3)><img class="articleImage" src="/getImage/@articleData(i*3)" alt="pilt"></a>
 							<br>
 							<h1><a href=/article/@articleData(i*3)>@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
@@ -61,7 +61,7 @@
 				<div id="right_col">
 					@for(i <- 1 to articleData.size/3-1 by 2) {
 						<article>
-							<a href=/article/@articleData(i*3)><img id="articleImage" src="/getImage/@articleData(i*3)"  alt="pilt"></a>
+							<a href=/article/@articleData(i*3)><img class="articleImage" src="/getImage/@articleData(i*3)"  alt="pilt"></a>
 							<br>
 							<h1><a href=/article/@articleData(i*3)>@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
