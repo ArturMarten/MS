@@ -9,9 +9,6 @@ import play.db.ebean.Model;
 
 @Entity
 public class Users extends Model{
-
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
-	public int id;
 	@Id
 	public String email;
 	
