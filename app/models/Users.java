@@ -1,15 +1,18 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
 
 import play.db.ebean.Model;
 
 @Entity
 public class Users extends Model{
-	@Id	
+
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 	public int id;
-	
+	@Id
 	public String email;
 	
 	public String password;

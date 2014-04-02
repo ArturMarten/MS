@@ -9,6 +9,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.db.DB;
 import play.mvc.Result;
+import play.mvc.Security;
 
 public class CommentController extends ApplicationController{
 	public static Result saveComment(String article_id) throws SQLException {
@@ -32,7 +33,7 @@ public class CommentController extends ApplicationController{
 
 		return redirect(routes.ArticleController.article(article_id));
 	}
-	
+	@Security.Authenticated(Secured.class)
 	public static Result deleteComment(String comment_id) throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection.prepareStatement("SELECT * FROM comment WHERE id = ?");

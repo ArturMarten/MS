@@ -27,6 +27,8 @@ GET    /removeFromNewsletter/:uudistevoog_id  controllers.NewsletterController.r
 GET    /login                                 controllers.ApplicationController.login()
 POST   /login                                 controllers.ApplicationController.authenticate()
 
+GET    /logout                                controllers.ApplicationController.logout()
+
 GET    /register                              controllers.ApplicationController.register()
 POST   /register                              controllers.ApplicationController.registerForm()
 

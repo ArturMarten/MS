@@ -7,8 +7,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Users;
 import play.db.DB;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.main;
 import views.html.maineditor;
 
@@ -31,7 +33,7 @@ public class MainController extends ApplicationController{
 
 		return ok(main.render(article));
 	}
-	
+	@Security.Authenticated(Secured.class)
 	public static Result maineditor(String sort) throws SQLException {
 		Connection connection = DB.getConnection();
 		Statement statement = connection.createStatement();
@@ -48,7 +50,9 @@ public class MainController extends ApplicationController{
 		result.close();
 		statement.close();
 		connection.close();
+		
+		Users user = Users.find.byId(session().get("email"));
 
-		return ok(maineditor.render(article));
+		return ok(maineditor.render(article,user));
 	}
 }

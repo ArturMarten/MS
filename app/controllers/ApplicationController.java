@@ -30,6 +30,13 @@ public class ApplicationController extends Controller {
 		}
 	}
 	
+	public static Result logout() {
+	    session().clear();
+	    return redirect(
+	        routes.MainController.main("main_new")
+	    );
+	}
+	
 	public static Result authenticate() {
 		Form<Login> loginForm = form(Login.class).bindFromRequest();
 		if (loginForm.hasErrors()) {

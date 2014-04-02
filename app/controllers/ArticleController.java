@@ -16,14 +16,19 @@ import org.apache.commons.io.IOUtils;
 
 import models.Comment;
 import models.Article;
+import models.Users;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.db.DB;
+import play.db.ebean.Model.Finder;
+import play.mvc.Security;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
 import views.html.article;
 import views.html.articleeditor;
+
+
 
 public class ArticleController extends ApplicationController{
 	public static Result article(String article_id) throws SQLException {
@@ -32,12 +37,14 @@ public class ArticleController extends ApplicationController{
 		return ok(article.render(uudiseandmed, kommentaar));
 	}
 	
+	@Security.Authenticated(Secured.class)
 	public static Result articleeditor(String article_id) throws SQLException {
 		List<String> uudiseandmed = Article.show(article_id);
 		ArrayList<ArrayList<String>> kommentaar = Comment.show(article_id);
-		return ok(articleeditor.render(uudiseandmed, kommentaar));
+		Users user = Users.find.byId(session().get("email"));
+		return ok(articleeditor.render(uudiseandmed, kommentaar,user));
 	}
-
+	@Security.Authenticated(Secured.class)
 	public static Result newArticle() throws SQLException{
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection.prepareStatement("INSERT INTO article(title,intro,body,summary) VALUES ('Pealkiri','Sissejuhatus','Teemaarendus','Kokkuvõte')");
@@ -53,7 +60,7 @@ public class ArticleController extends ApplicationController{
 		
 		return redirect(routes.ArticleController.articleeditor(article_id));
 	}
-
+	@Security.Authenticated(Secured.class)
 	public static Result saveArticle(String article_id) throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection.prepareStatement("UPDATE article SET title=?, intro = ?, body = ?, summary = ?  WHERE id =?");
@@ -76,7 +83,7 @@ public class ArticleController extends ApplicationController{
 
 		return redirect(routes.MainController.maineditor("main_new"));
 	}
-	
+	@Security.Authenticated(Secured.class)
 	public static Result deleteArticle(String article_id) throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection.prepareStatement("DELETE FROM article WHERE id = ?");
@@ -88,7 +95,7 @@ public class ArticleController extends ApplicationController{
 		
 		return redirect(routes.MainController.maineditor("main_new"));
 	}
-	
+	@Security.Authenticated(Secured.class)
 	public static Result uploadImage(String article_id) throws SQLException, IOException {
 		MultipartFormData body = request().body().asMultipartFormData();
 		FilePart image = body.getFile("image");
@@ -111,7 +118,8 @@ public class ArticleController extends ApplicationController{
 		else{
 			return redirect(routes.ArticleController.articleeditor(article_id));    
 			}
-		}
+	}
+	
 	public static Result getImage(String article_id) throws SQLException, IOException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection.prepareStatement("SELECT image FROM article WHERE id = ?");

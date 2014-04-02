@@ -1,4 +1,4 @@
-@(newsletterData : java.util.ArrayList[java.util.ArrayList[String]])
+@(newsletterData : java.util.ArrayList[java.util.ArrayList[String]], user: Users)
 
 <!DOCTYPE html>
 <html>
@@ -12,8 +12,8 @@
 	  <div id="kast1">
 		  <div id="kast2">
 			<div id="riba">
-				<p>Nimi Siia</p>
-				<a id="logivälja" href="/main/main_new">Logi välja</a>
+				<p>@user.first_name @user.last_name</p>
+				<a id="logivälja" href="/logout">Logi välja</a>
 			</div>
 			<div id="content">
 			<a id="avalehele" href="/maineditor/main_new">Avalehele</a>

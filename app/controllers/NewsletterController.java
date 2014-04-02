@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import models.Users;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.db.DB;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.newsletter;
 import views.html.newslettereditor;
 
@@ -42,7 +44,9 @@ public class NewsletterController extends ApplicationController{
 		result.close();
 		connection.close();
 		
-		return ok(newslettereditor.render(newsletterData));
+		Users user = Users.find.byId(session().get("email"));
+		
+		return ok(newslettereditor.render(newsletterData,user));
 	}
 	
 	public static Result addToNewsletter() throws SQLException {
@@ -92,7 +96,7 @@ public class NewsletterController extends ApplicationController{
 
 		return redirect(routes.NewsletterController.newsletter());
 	}
-
+	@Security.Authenticated(Secured.class)
 	public static Result removeFromNewsletter(String newsletter_id)
 			throws SQLException {
 		Connection connection = DB.getConnection();

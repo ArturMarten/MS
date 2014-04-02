@@ -1,4 +1,4 @@
-@(articleData: List[String])
+@(articleData: List[String],user: Users)
 
 <!DOCTYPE html>
 <html>
@@ -11,8 +11,8 @@
    
    <body>
 		<div id="riba">
-			<a id="logivalja" href="/main/main_new">Logi välja</a>
-			<p id="kasutajatunnus">Nimi Siia</p><br>
+			<a id="logivalja" href="/logout">Logi välja</a>
+			<p id="kasutajatunnus">@user.first_name @user.last_name</p><br>
 			<a id="newslettereditor" href="/newslettereditor">Halda uudiskirju </a>
 			<a id="uusUudis" href="/newArticle">Uus uudis</a>
 		</div>
