@@ -1,10 +1,11 @@
 package controllers;
 
 import com.avaje.ebean.Ebean;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Users;
+import play.Logger;
 import play.mvc.Controller;
-
 import play.mvc.Result;
 import views.html.login;
 import views.html.register;
@@ -35,6 +36,17 @@ public class ApplicationController extends Controller {
 	    return redirect(
 	        routes.MainController.main("main_new")
 	    );
+	}
+	
+	public static Result facebookLogin() {
+		JsonNode json = request().body().asJson();
+		String email = json.get("email").asText();
+		String first_name = json.get("first_name").asText();
+		String last_name = json.get("last_name").asText();
+		Users user= new Users(email, "", first_name, last_name);
+		Ebean.save(user);
+		session().put("email", email);
+		return ok(routes.MainController.maineditor("main_new").toString());
 	}
 	
 	public static Result authenticate() {

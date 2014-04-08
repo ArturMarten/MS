@@ -4,20 +4,26 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED">
+		<title>Login</title>
 		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/login.css")"/>
-		<title>Login</title>    
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/facebook.js")"></script>
 	</head>
 	<body>
-  <div id="kast1">
-	  <div id="kast2">
-		<a id="avalehele" href="/main/main_new">Avalehele</a>
-		<h1>Login</h1>
-		<form action="/login" method="POST">			
-			<p><input type="email" name="email" placeholder="Email" value=""></p>
-			<p><input type="password" name="password" placeholder="Parool"></p>
-			<p><button type="submit">Login</button> </p>
-		</form>
-	  </div>
-  </div>
-</body>
+		<div id="kast1">
+			<div id="kast2">
+				<a id="avalehele" href="/main/main_new">Avalehele</a>
+				<h1>Login</h1>
+				<form action="/login" method="POST">
+					<p><input type="email" name="email" placeholder="Email" value=""></p>
+					<p><input type="password" name="password" placeholder="Parool"></p>
+					<p><button type="submit">Login</button> </p>
+				</form>
+				<div id="fb-root"></div>
+				<fb:login-button scope="email" onlogin="facebookLogin()">
+					Logi sisse Facebooki kaudu
+				</fb:login-button>
+			</div>
+		</div>
+	</body>
 </html>
