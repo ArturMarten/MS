@@ -100,7 +100,7 @@ form{
 .comment{
     border-width: 3px;
 	background-color: #FFF;
-	margin: 0% 1%;
+	margin: 1% 1%;
 	padding: 1% 1%;
 	border-radius: 10px;
 }
@@ -124,12 +124,6 @@ form{
 }
 .like{
     padding-right: 0.9em;
-    display: inline-block;
-    float: right;
-    position: relative;
-}
-p {
-	padding-right: 0.9em;
     display: inline-block;
     float: right;
     position: relative;
