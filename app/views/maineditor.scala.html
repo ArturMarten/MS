@@ -7,6 +7,7 @@
 		<meta name="description" content="MS UUDISED"> 
 		<title>Avaleht toimetaja</title>
 		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/maineditor.css")"/> 
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
    </head>
    
    <body>
@@ -35,9 +36,7 @@
 					<td id="enimkommenteeritud"><a href="/maineditor/main_most_commentated">enim kommenteeritud</a></td>
 				</tr>
 			</table>
-			
-			<script type="text/javascript" src="@routes.Assets.at("javascripts/sort-ajax.js")"></script>
-			
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/sort-ajax.js")"></script>
 			<div id="wrap">
 				<div id="left_col">
 					@for(i <- 0 to articleData.size/3-1 by 2) {
