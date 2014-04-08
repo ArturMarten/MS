@@ -5,16 +5,21 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED">
+		<title>Uudis</title>
 		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/article.css")"/>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/comments.js")"></script>
-		<title>Uudis</title>
+		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/popup.css")"/>
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/login-popup.js")"></script>
+	
 	</head>
 	<body>
-		<a id="logisisse" href="/login">Logi sisse </a>
+		<a id="logisisse" href="/login" class="popup_button">Logi sisse </a>
 		<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
 
 		<div id="content">
+		
+	
 			<table id="teemad">
 				<tr>
 					<td id="teema1"><a href="/main/main_new">Teema1</a></td>
@@ -24,6 +29,17 @@
 					<td id="teema5"><a href="/main/main_new">Teema5</a></td>
 				</tr>
 			</table>
+			
+		<!--Login popup-->
+        <div class="popup">
+        	<button data-href="#" class="sulge_popup">Close</button>
+			@helper.form(routes.ApplicationController.authenticate) {
+				<p><input type="email" name="email" placeholder="Email"></p>
+				<p><input type="password" name="password" placeholder="Parool"></p>
+				<p><button type="submit">Login</button> </p>
+			}
+        </div>
+		<!--popup-->
 			
 			<article>
 				<img id="articleImage" src="/getImage/@articleData(0)" alt="pilt" class="articleImg" />
