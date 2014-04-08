@@ -5,8 +5,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED"> 
-		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/maineditor.css")"/> 
 		<title>Avaleht toimetaja</title>
+		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/maineditor.css")"/> 
    </head>
    
    <body>
@@ -16,6 +16,7 @@
 			<a id="newslettereditor" href="/newslettereditor">Halda uudiskirju </a>
 			<a id="uusUudis" href="/newArticle">Uus uudis</a>
 		</div>
+		
 		<div id="content">
 			<table id="teemad">
 				<tr>
@@ -26,6 +27,7 @@
 					<td><a href="/maineditor/main_new">Teema5</a></td>
 				</tr>
 			</table>
+			
 			<table id= "sorteerimine">
 				<tr>
 					<td id="uued"><a href="/maineditor/main_new">uued</a></td>
@@ -33,6 +35,8 @@
 					<td id="enimkommenteeritud"><a href="/maineditor/main_most_commentated">enim kommenteeritud</a></td>
 				</tr>
 			</table>
+			
+			<script type="text/javascript" src="@routes.Assets.at("javascripts/sort-ajax.js")"></script>
 			
 			<div id="wrap">
 				<div id="left_col">
