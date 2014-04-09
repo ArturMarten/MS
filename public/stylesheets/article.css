@@ -4,6 +4,7 @@ body{
     background-color: #E5E4D7;
     margin-left: 12%;
     margin-right: 12%;
+	min-width: 430px;
 }
 #content {
     margin-left: 5%;
