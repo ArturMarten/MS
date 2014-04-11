@@ -20,10 +20,9 @@ window.fbAsyncInit = function() {
 	ref.parentNode.insertBefore(js, ref);
 }(document));
 
-function facebookLogin() {
+function facebookLogin(redirect_url) {
 	FB.getLoginStatus(function(response) {
 		if (response.status === 'connected') {
-			console.log("töötab");
 			FB.api('/me', function (user) {
 				var data = {
 					email: String(user.email),
@@ -31,7 +30,7 @@ function facebookLogin() {
 					last_name: String(user.last_name),
 				};
 				$.ajax({
-					url:"/facebookLogin",
+					url:"/facebookLogin/"+redirect_url,
 					contentType: "application/json",
 					type: "POST",
 					data: JSON.stringify(data),

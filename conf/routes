@@ -34,8 +34,9 @@ GET    /login                                        controllers.ApplicationCont
 GET    /login/                                       controllers.ApplicationController.login(url="/new")
 GET    /login/*url                                   controllers.ApplicationController.login(url: String)
 POST   /login/*url                                   controllers.ApplicationController.authenticate(url: String)
+GET    /editor/login                                 controllers.MainController.maineditor(sort="new")
 
-POST   /facebookLogin                                controllers.ApplicationController.facebookLogin()
+POST   /facebookLogin/*url                           controllers.ApplicationController.facebookLogin(url: String)
 
 GET    /editor/logout/*url                           controllers.ApplicationController.logout(url: String)
 

@@ -33,15 +33,24 @@ public class ApplicationController extends Controller {
 		return redirect(url.replace("/editor", ""));
 	}
 
-	public static Result facebookLogin() {
+	public static Result facebookLogin(String url) {
 		JsonNode json = request().body().asJson();
 		String email = json.get("email").asText();
 		String first_name = json.get("first_name").asText();
 		String last_name = json.get("last_name").asText();
-		Users user= new Users(email, "", first_name, last_name);
-		Ebean.save(user);
+		Users user=null;
+		try {
+			user = Users.find.byId(email);
+		} catch (Exception e) {
+			user= new Users(email, "", first_name, last_name);
+			Ebean.save(user);
+		}
+		if(user==null){
+			user= new Users(email, "", first_name, last_name);
+			Ebean.save(user);
+		}
 		session().put("email", email);
-		return ok(routes.MainController.maineditor("new").toString());
+		return ok("/editor" + url);
 	}
 
 	public static Result authenticate(String url) {

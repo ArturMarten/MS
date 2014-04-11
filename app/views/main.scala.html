@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/popup.css")"/>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/login-popup.js")"></script>
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/facebook.js")"></script>
 	</head>
 	
 	<body>
@@ -34,21 +35,20 @@
 					<td id="enimkommenteeritud"><a href="/most-commentated">enim kommenteeritud</a></td>
 				</tr>
 			</table>
+			<script type="text/javascript" src="@routes.Assets.at("javascripts/sort-ajax.js")"></script>
 			
-
-		<script type="text/javascript" src="@routes.Assets.at("javascripts/sort-ajax.js")"></script>
-			
-			
-		<!--Login popup-->
-		<div class="popup">
-			<button data-href="#" class="sulge_popup">Close</button>
-			@helper.form(routes.ApplicationController.authenticate(request.uri)) {
-				<p><input type="email" name="email" placeholder="Email"></p>
-				<p><input type="password" name="password" placeholder="Parool"></p>
-				<p><button type="submit">Login</button> </p>
-			}
-		</div>
-		<!--popup-->
+			<div class="popup">
+				@helper.form(routes.ApplicationController.authenticate(request.uri)) {
+					<p><input type="email" name="email" placeholder="Email"></p>
+					<p><input type="password" name="password" placeholder="Parool"></p>
+					<p><button type="submit">Login</button> </p>
+				}
+				<button data-href="#" class="sulge_popup">Close</button>
+				<div id="fb-root"></div>
+				<fb:login-button scope="email" onlogin="facebookLogin('@request.uri')">
+					Logi sisse Facebooki kaudu
+				</fb:login-button>
+			</div>
 			
 			<div id="wrap">
 				<div id="left_col">
