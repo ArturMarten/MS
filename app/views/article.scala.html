@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED">
-		<title>Uudis</title>
+		<title>@articleData(1)</title>
 		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/article.css")"/>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/comments.js")"></script>
@@ -14,26 +14,24 @@
 	
 	</head>
 	<body>
-		<a id="logisisse" href="/login" class="popup_button">Logi sisse </a>
+		<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
 		<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
 
 		<div id="content">
-		
-	
 			<table id="teemad">
 				<tr>
-					<td id="teema1"><a href="/main/main_new">Teema1</a></td>
-					<td id="teema2"><a href="/main/main_new">Teema2</a></td>
-					<td id="teema3"><a href="/main/main_new">Teema3</a></td>
-					<td id="teema4"><a href="/main/main_new">Teema4</a></td>
-					<td id="teema5"><a href="/main/main_new">Teema5</a></td>
+					<td id="teema1"><a href="/new">Teema1</a></td>
+					<td id="teema2"><a href="/new">Teema2</a></td>
+					<td id="teema3"><a href="/new">Teema3</a></td>
+					<td id="teema4"><a href="/new">Teema4</a></td>
+					<td id="teema5"><a href="/new">Teema5</a></td>
 				</tr>
 			</table>
 			
 		<!--Login popup-->
         <div class="popup">
         	<button data-href="#" class="sulge_popup">Close</button>
-			@helper.form(routes.ApplicationController.authenticate) {
+			@helper.form(routes.ApplicationController.authenticate(request.uri)) {
 				<p><input type="email" name="email" placeholder="Email"></p>
 				<p><input type="password" name="password" placeholder="Parool"></p>
 				<p><button type="submit">Login</button> </p>

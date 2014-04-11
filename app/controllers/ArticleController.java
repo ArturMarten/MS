@@ -20,7 +20,6 @@ import models.Users;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.db.DB;
-import play.db.ebean.Model.Finder;
 import play.mvc.Security;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
@@ -81,7 +80,7 @@ public class ArticleController extends ApplicationController{
 		connection.close();
 		statement.close();
 
-		return redirect(routes.MainController.maineditor("main_new"));
+		return redirect(routes.MainController.maineditor("new"));
 	}
 	@Security.Authenticated(Secured.class)
 	public static Result deleteArticle(String article_id) throws SQLException {
@@ -93,7 +92,7 @@ public class ArticleController extends ApplicationController{
 		statement.close();
 		connection.close();
 		
-		return redirect(routes.MainController.maineditor("main_new"));
+		return redirect(routes.MainController.maineditor("new"));
 	}
 	@Security.Authenticated(Secured.class)
 	public static Result uploadImage(String article_id) throws SQLException, IOException {

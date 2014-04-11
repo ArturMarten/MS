@@ -13,10 +13,10 @@
 		  <div id="kast2">
 			<div id="riba">
 				<p>@user.first_name @user.last_name</p>
-				<a id="logivälja" href="/logout">Logi välja</a>
+				<a id="logivälja" href="/editor/logout/@{request.uri}">Logi välja</a>
 			</div>
 			<div id="content">
-			<a id="avalehele" href="/maineditor/main_new">Avalehele</a>
+			<a id="avalehele" href="/editor/new">Avalehele</a>
 			<h1>Uudistevoog</h1>
 				<table>
 					<tr id="firstRow">
@@ -38,7 +38,7 @@
 						<td>@newsletterData(i)(5)</td>
 						<td>@newsletterData(i)(6)</td>
 						<td>@newsletterData(i)(7)</td>
-						<td><form action="/removeFromNewsletter/@newsletterData(i)(0)" method="GET"> 
+						<td><form action="/editor/removeFromNewsletter/@newsletterData(i)(0)" method="GET"> 
 							<input type="submit" value="Kustuta">
 						</form></td>
 					</tr>

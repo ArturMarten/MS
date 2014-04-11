@@ -13,25 +13,25 @@
 	</head>
 	
 	<body>
-		<a id="logisisse" href="/login" class="popup_button">Logi sisse </a>
+		<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
 		<a id="register" href="/register">Registreeri </a>
 		<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
 		<div id="content">
 			<table id="teemad">
 				<tr>
-					<td><a href="/main/main_new">Teema1</a></td>
-					<td><a href="/main/main_new">Teema2</a></td>
-					<td><a href="/main/main_new">Teema3</a></td> 
-					<td><a href="/main/main_new">Teema4</a></td>
-					<td><a href="/main/main_new">Teema5</a></td>
+					<td><a href="/new">Teema1</a></td>
+					<td><a href="/new">Teema2</a></td>
+					<td><a href="/new">Teema3</a></td> 
+					<td><a href="/new">Teema4</a></td>
+					<td><a href="/new">Teema5</a></td>
 				</tr>
 			</table>
 			
 			<table id= "sorteerimine">
 				<tr>
-					<td id="uued"><a href="/main/main_new">uued</a></td>
-					<td id="enimloetud"><a href="/main/main_most_viewed">enim loetud</a></td>
-					<td id="enimkommenteeritud"><a href="/main/main_most_commentated">enim kommenteeritud</a></td>
+					<td id="uued"><a href="/new">uued</a></td>
+					<td id="enimloetud"><a href="/most-viewed">enim loetud</a></td>
+					<td id="enimkommenteeritud"><a href="/most-commentated">enim kommenteeritud</a></td>
 				</tr>
 			</table>
 			
@@ -40,16 +40,15 @@
 			
 			
 		<!--Login popup-->
-        <div class="popup">
-        	<button data-href="#" class="sulge_popup">Close</button>
-			@helper.form(routes.ApplicationController.authenticate) {
+		<div class="popup">
+			<button data-href="#" class="sulge_popup">Close</button>
+			@helper.form(routes.ApplicationController.authenticate(request.uri)) {
 				<p><input type="email" name="email" placeholder="Email"></p>
 				<p><input type="password" name="password" placeholder="Parool"></p>
 				<p><button type="submit">Login</button> </p>
 			}
-        </div>
+		</div>
 		<!--popup-->
-		
 			
 			<div id="wrap">
 				<div id="left_col">

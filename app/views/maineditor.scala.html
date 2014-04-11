@@ -11,26 +11,26 @@
    
    <body>
 		<div id="riba">
-			<a id="logivalja" href="/logout">Logi välja</a>
+			<a id="logivalja" href="/editor/logout/@{request.uri}">Logi välja</a>
 			<p id="kasutajatunnus">@user.first_name @user.last_name</p><br>
-			<a id="newslettereditor" href="/newslettereditor">Halda uudiskirju </a>
-			<a id="uusUudis" href="/newArticle">Uus uudis</a>
+			<a id="newslettereditor" href="/editor/newsletter">Halda uudiskirju </a>
+			<a id="uusUudis" href="/editor/newArticle">Uus uudis</a>
 		</div>
 		<div id="content">
 			<table id="teemad">
 				<tr>
-					<td><a href="/maineditor/main_new">Teema1</a></td>
-					<td><a href="/maineditor/main_new">Teema2</a></td>
-					<td><a href="/maineditor/main_new">Teema3</a></td> 
-					<td><a href="/maineditor/main_new">Teema4</a></td>
-					<td><a href="/maineditor/main_new">Teema5</a></td>
+					<td><a href="/editor/new">Teema1</a></td>
+					<td><a href="/editor/new">Teema2</a></td>
+					<td><a href="/editor/new">Teema3</a></td> 
+					<td><a href="/editor/new">Teema4</a></td>
+					<td><a href="/editor/new">Teema5</a></td>
 				</tr>
 			</table>
 			<table id= "sorteerimine">
 				<tr>
-					<td id="uued"><a href="/maineditor/main_new">uued</a></td>
-					<td id="enimloetud"><a href="/maineditor/main_most_viewed">enim loetud</a></td>
-					<td id="enimkommenteeritud"><a href="/maineditor/main_most_commentated">enim kommenteeritud</a></td>
+					<td id="uued"><a href="/editor/new">uued</a></td>
+					<td id="enimloetud"><a href="/editor/most-viewed">enim loetud</a></td>
+					<td id="enimkommenteeritud"><a href="/editor/most-commentated">enim kommenteeritud</a></td>
 				</tr>
 			</table>
 			
@@ -42,8 +42,8 @@
 								<img class="articleImage" src="/getImage/@articleData(i*3)" alt="pilt">
 							</a>
 							<br>
-							<a href="/articleeditor/@articleData(i*3)">Muuda uudist</a>
-							<a href="/deleteArticle/@articleData(i*3)">Kustuta uudis</a>
+							<a href="/editor/article/@articleData(i*3)">Muuda uudist</a>
+							<a href="/editor/deleteArticle/@articleData(i*3)">Kustuta uudis</a>
 							<h1><a href="/article/@articleData(i*3)">@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
 						</article>
@@ -56,8 +56,8 @@
 								<img class="articleImage" src="/getImage/@articleData(i*3)" alt="pilt">
 							</a>	
 							<br>
-							<a href="/articleeditor/@articleData(i*3)">Muuda uudist</a>
-							<a href="/deleteArticle/@articleData(i*3)">Kustuta uudis</a>
+							<a href="/editor/article/@articleData(i*3)">Muuda uudist</a>
+							<a href="/editor/deleteArticle/@articleData(i*3)">Kustuta uudis</a>
 							<h1><a href="/article/@articleData(i*3)">@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
 						</article>

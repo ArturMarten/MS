@@ -7,6 +7,7 @@ window.fbAsyncInit = function() {
 	});
 };
 
+
 (function(d) {
 	var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 	if (d.getElementById(id)) {
@@ -19,11 +20,10 @@ window.fbAsyncInit = function() {
 	ref.parentNode.insertBefore(js, ref);
 }(document));
 
-// klikkimisel
-
 function facebookLogin() {
 	FB.getLoginStatus(function(response) {
 		if (response.status === 'connected') {
+			console.log("töötab");
 			FB.api('/me', function (user) {
 				var data = {
 					email: String(user.email),

@@ -13,19 +13,19 @@
 	
 	<body>
 		<div id="riba">
-			<a id="logivalja" href="/logout">Logi välja</a>
+			<a id="logivalja" href="/editor/logout/@{request.uri}">Logi välja</a>
 			<p id="kasutajatunnus">@user.first_name @user.last_name</p><br>
-			<a id="newslettereditor" href="/newslettereditor">Halda uudiskirju</a>
-			<a id="uusUudis" href="/newArticle">Uus uudis</a>
+			<a id="newslettereditor" href="/editor/newsletter">Halda uudiskirju</a>
+			<a id="uusUudis" href="/editor/newArticle">Uus uudis</a>
 		</div>
 		<div id="content">
 			<table id="teemad">
 				<tr>
-					<td id="teema1"><a href="/maineditor/main_new">Teema1</a></td>
-					<td id="teema2"><a href="/maineditor/main_new">Teema2</a></td>
-					<td id="teema3"><a href="/maineditor/main_new">Teema3</a></td>
-					<td id="teema4"><a href="/maineditor/main_new">Teema4</a></td>
-					<td id="teema5"><a href="/maineditor/main_new">Teema5</a></td>
+					<td id="teema1"><a href="/editor/new">Teema1</a></td>
+					<td id="teema2"><a href="/editor/new">Teema2</a></td>
+					<td id="teema3"><a href="/editor/new">Teema3</a></td>
+					<td id="teema4"><a href="/editor/new">Teema4</a></td>
+					<td id="teema5"><a href="/editor/new">Teema5</a></td>
 				</tr>
 			</table>
 			
@@ -37,7 +37,7 @@
 					<input type="submit" value="Lae pilt üles">
 				</form>
 				<br>
-				<form method="post"  action="/saveArticle/@articleData(0)">
+				<form method="post"  action="/editor/saveArticle/@articleData(0)">
 					<b>Pealkiri</b>
 					<textarea id="title" name = "title">@articleData(1)</textarea>
 					<b>Sissejuhatus</b>
@@ -60,7 +60,7 @@
 						<div class="nimi"> @commentData(i)(1) </div>
 						<div class="email"> @commentData(i)(2) </div>
 						<div class="kuupaev"> @commentData(i)(4) </div>
-						<form action="/deleteComment/@commentData(i)(0)" method="GET">
+						<form action="/editor/deleteComment/@commentData(i)(0)" method="GET">
 							<input class="kustutaKommentaar" type="submit" value="Kustuta kommentaar" >
 						</form>	
 						<p>Like @commentData(i)(3)</p><br>

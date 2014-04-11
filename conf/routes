@@ -4,38 +4,46 @@
 
 # Home page
 
-GET    /                                      controllers.MainController.main(sort="main_new")
-GET    /main/:sort                            controllers.MainController.main(sort: String)
-GET    /maineditor/:sort                      controllers.MainController.maineditor(sort: String)
+GET    /                                             controllers.MainController.main(sort="new")
+GET    /new                                          controllers.MainController.main(sort="new")
+GET    /most-viewed                                  controllers.MainController.main(sort="most_viewed")
+GET    /most-commentated                             controllers.MainController.main(sort="most_commentated")
 
-GET    /article/:article_id                   controllers.ArticleController.article(article_id: String)
-GET    /articleeditor/:article_id             controllers.ArticleController.articleeditor(article_id: String)
-GET    /newArticle                            controllers.ArticleController.newArticle()
-POST   /saveArticle/:article_id               controllers.ArticleController.saveArticle(article_id: String)
-GET    /deleteArticle/:article_id             controllers.ArticleController.deleteArticle(article_id: String)
+GET    /editor/                                      controllers.MainController.maineditor(sort="new")
+GET    /editor/new                                   controllers.MainController.maineditor(sort="new")
+GET    /editor/most-viewed                           controllers.MainController.maineditor(sort="most_viewed")
+GET    /editor/most-commentated                      controllers.MainController.maineditor(sort="most_commentated")
 
-POST   /saveComment/:article_id               controllers.CommentController.saveComment(article_id: String)
-GET    /deleteComment/:comment_id             controllers.CommentController.deleteComment(comment_id: String)
-GET    /addLike/:comment_id                   controllers.CommentController.addLike(comment_id: String)
-GET    /inappropriateComment/:comment_id      controllers.CommentController.inappropriateComment(comment_id: String)
+GET    /article/:article_id                          controllers.ArticleController.article(article_id: String)
+GET    /editor/article/:article_id                   controllers.ArticleController.articleeditor(article_id: String)
+GET    /editor/newArticle                            controllers.ArticleController.newArticle()
+POST   /editor/saveArticle/:article_id               controllers.ArticleController.saveArticle(article_id: String)
+GET    /editor/deleteArticle/:article_id             controllers.ArticleController.deleteArticle(article_id: String)
 
-GET    /newsletter                            controllers.NewsletterController.newsletter()
-GET    /newslettereditor                      controllers.NewsletterController.newslettereditor()
-POST   /addToNewsletter                       controllers.NewsletterController.addToNewsletter()
-GET    /removeFromNewsletter/:uudistevoog_id  controllers.NewsletterController.removeFromNewsletter(uudistevoog_id: String)
+POST   /saveComment/:article_id                      controllers.CommentController.saveComment(article_id: String)
+GET    /addLike/:comment_id                          controllers.CommentController.addLike(comment_id: String)
+GET    /inappropriateComment/:comment_id             controllers.CommentController.inappropriateComment(comment_id: String)
+GET    /editor/deleteComment/:comment_id             controllers.CommentController.deleteComment(comment_id: String)
 
-GET    /login                                 controllers.ApplicationController.login()
-POST   /login                                 controllers.ApplicationController.authenticate()
+GET    /newsletter                                   controllers.NewsletterController.newsletter()
+GET    /editor/newsletter                            controllers.NewsletterController.newslettereditor()
+POST   /addToNewsletter                              controllers.NewsletterController.addToNewsletter()
+GET    /editor/removeFromNewsletter/:uudistevoog_id  controllers.NewsletterController.removeFromNewsletter(uudistevoog_id: String)
 
-POST   /facebookLogin                         controllers.ApplicationController.facebookLogin()
+GET    /login                                        controllers.ApplicationController.login(url="/new")
+GET    /login/                                       controllers.ApplicationController.login(url="/new")
+GET    /login/*url                                   controllers.ApplicationController.login(url: String)
+POST   /login/*url                                   controllers.ApplicationController.authenticate(url: String)
 
-GET    /logout                                controllers.ApplicationController.logout()
+POST   /facebookLogin                                controllers.ApplicationController.facebookLogin()
 
-GET    /register                              controllers.ApplicationController.register()
-POST   /register                              controllers.ApplicationController.registerForm()
+GET    /editor/logout/*url                           controllers.ApplicationController.logout(url: String)
 
-POST   /uploadImage/:article_id               controllers.ArticleController.uploadImage(article_id: String)
-GET    /getImage/:article_id                  controllers.ArticleController.getImage(article_id: String)
+GET    /register                                     controllers.ApplicationController.register()
+POST   /register                                     controllers.ApplicationController.registerForm()
+
+POST   /editor/uploadImage/:article_id               controllers.ArticleController.uploadImage(article_id: String)
+GET    /getImage/:article_id                         controllers.ArticleController.getImage(article_id: String)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file                         controllers.Assets.at(path="/public", file)
+GET     /assets/*file                                controllers.Assets.at(path="/public", file)
