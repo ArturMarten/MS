@@ -5,7 +5,6 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED">
-		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/articleeditor.css")"/>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/comments.js")"></script>
 		<title>Uudistetoimetaja</title>
@@ -14,7 +13,7 @@
 	<body>
 		<div id="riba">
 			<a id="logivalja" href="/editor/logout/@{request.uri}">Logi välja</a>
-			<p id="kasutajatunnus">@user.first_name @user.last_name</p><br>
+			<p id="kasutajatunnus">@user.first_name @user.last_name</p>
 			<a id="newslettereditor" href="/editor/newsletter">Halda uudiskirju</a>
 			<a id="uusUudis" href="/editor/newArticle">Uus uudis</a>
 		</div>
@@ -28,46 +27,48 @@
 					<td id="teema5"><a href="/editor/new">Teema5</a></td>
 				</tr>
 			</table>
-			
-			<article>
-				<img id="ajaleht1" src="/getImage/@articleData(0)" alt="pilt">
+			<div id="articlewrap">	
+				<link rel="stylesheet" href="@routes.Assets.at("stylesheets/articleeditor.css")"/>
+				<article>
+					<img id="ajaleht1" src="/getImage/@articleData(0)" alt="pilt">
+					<br>
+					<form method="post" action="/uploadImage/@articleData(0)" enctype="multipart/form-data">
+						<input type="file" name="image">
+						<input type="submit" value="Lae pilt üles">
+					</form>
+					<br>
+					<form method="post"  action="/editor/saveArticle/@articleData(0)">
+						<b>Pealkiri</b>
+						<textarea id="title" name = "title">@articleData(1)</textarea>
+						<b>Sissejuhatus</b>
+						<textarea id="intro" name = "intro">@articleData(2)</textarea>
+						<b>Teemaarendus</b>
+						<textarea id="body" name = "body">@articleData(3)</textarea>
+						<b>Kokkuvõte</b>
+						<textarea id="summary" name = "summary">@articleData(4)</textarea>
+						<input id="save" type="submit" value="Salvesta muudatused">
+					</form>
+				</article>
+				
 				<br>
-				<form method="post" action="/uploadImage/@articleData(0)" enctype="multipart/form-data">
-					<input type="file" name="image">
-					<input type="submit" value="Lae pilt üles">
-				</form>
-				<br>
-				<form method="post"  action="/editor/saveArticle/@articleData(0)">
-					<b>Pealkiri</b>
-					<textarea id="title" name = "title">@articleData(1)</textarea>
-					<b>Sissejuhatus</b>
-					<textarea id="intro" name = "intro">@articleData(2)</textarea>
-					<b>Teemaarendus</b>
-					<textarea id="body" name = "body">@articleData(3)</textarea>
-					<b>Kokkuvõte</b>
-					<textarea id="summary" name = "summary">@articleData(4)</textarea>
-					<input id="save" type="submit" value="Salvesta muudatused">
-				</form>
-			</article>
-			
-			<br>
-			<input id="loeVeelKommentaare" type="button"
-				value="Redigeeri kommentaare">
-			<div id="commentsBody" class="commentsBody">
-			@for(i <- 0 until commentData.size()) {
-				<div class="comment">
-					<div class="muuu">
-						<div class="nimi"> @commentData(i)(1) </div>
-						<div class="email"> @commentData(i)(2) </div>
-						<div class="kuupaev"> @commentData(i)(4) </div>
-						<form action="/editor/deleteComment/@commentData(i)(0)" method="GET">
-							<input class="kustutaKommentaar" type="submit" value="Kustuta kommentaar" >
-						</form>	
-						<p>Like @commentData(i)(3)</p><br>
+				<input id="loeVeelKommentaare" type="button"
+					value="Redigeeri kommentaare">
+				<div id="commentsBody" class="commentsBody">
+				@for(i <- 0 until commentData.size()) {
+					<div class="comment">
+						<div class="muuu">
+							<div class="nimi"> @commentData(i)(1) </div>
+							<div class="email"> @commentData(i)(2) </div>
+							<div class="kuupaev"> @commentData(i)(4) </div>
+							<form action="/editor/deleteComment/@commentData(i)(0)" method="GET">
+								<input class="kustutaKommentaar" type="submit" value="Kustuta kommentaar" >
+							</form>	
+							<p>Like @commentData(i)(3)</p><br>
+						</div>
+						<div class="sisu"> @commentData(i)(5) </div>
 					</div>
-					<div class="sisu"> @commentData(i)(5) </div>
+				}
 				</div>
-			}
 			</div>
 		</div>
 	</body>
