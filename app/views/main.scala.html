@@ -35,7 +35,7 @@
 					<td id="enimkommenteeritud"><a href="/most-commentated">enim kommenteeritud</a></td>
 				</tr>
 			</table>
-			<script type="text/javascript" src="@routes.Assets.at("javascripts/sort-ajax.js")"></script>
+
 			
 			<div class="popup">
 				@helper.form(routes.ApplicationController.authenticate(request.uri)) {
@@ -46,7 +46,7 @@
 				<button data-href="#" class="sulge_popup">Close</button>
 				<div id="fb-root"></div>
 				<fb:login-button scope="email" onlogin="facebookLogin('@request.uri')">
-					Logi sisse Facebooki kaudu
+					Logi sisse Facebookist
 				</fb:login-button>
 			</div>
 			
@@ -56,7 +56,7 @@
 						<article>
 							<a href=/article/@articleData(i*3)><img class="articleImage" src="/getImage/@articleData(i*3)" alt="pilt"></a>
 							<br>
-							<h1><a href=/article/@articleData(i*3)>@articleData(i*3+1)</a></h1>
+							<h1><a href=/article/@articleData(i*3) id="articleId">@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
 						</article>
 					}
@@ -71,6 +71,8 @@
 						</article>
 					}
 				</div>
+			<script type="text/javascript" src="@routes.Assets.at("javascripts/sort-ajax.js")"></script>
+			<script type="text/javascript" src="@routes.Assets.at("javascripts/article-ajax.js")"></script>
 			</div>
 		</div>
 	</body>

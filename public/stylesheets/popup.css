@@ -11,12 +11,13 @@
 	right: 15.8%;
 	top: 0.9%;
 	border-radius: 10px;
+	padding-bottom: 1%;
 }
 
 .sulge_popup{
 	position: absolute;
-	bottom: 23%; 
-	right: 5%;
+	bottom: 26.6%; 
+	right: 7%;
 }
 
 .popup_kiri{

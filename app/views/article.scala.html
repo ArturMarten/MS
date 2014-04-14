@@ -6,20 +6,17 @@
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED">
 		<title>@articleData(1)</title>
-		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/article.css")"/>
-		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/popup.css")"/>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
-		<script type="text/javascript" src="@routes.Assets.at("javascripts/comments.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/login-popup.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/facebook.js")"></script>
+		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/popup.css")"/>
 	</head>
 	
 	<body>
-		<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
-		<a id="register" href="/register">Registreeri </a>
-		<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
-		
 		<div id="content">
+			<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
+			<a id="register" href="/register">Registreeri </a>
+			<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
 			<table id="teemad">
 				<tr>
 					<td id="teema1"><a href="/new">Teema1</a></td>
@@ -43,51 +40,55 @@
 				</fb:login-button>
 			</div>
 			
-			<article>
-				<img id="articleImage" src="/getImage/@articleData(0)" alt="pilt" class="articleImg" />
-				<h2 id="pealkiri">@articleData(1)</h2>
-				<section id="sissejuhatus">
-					@articleData(2)
-				</section>
+			<div id="articlewrap">
+				<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/article.css")"/>
+				<article>
+					<img id="articleImage" src="/getImage/@articleData(0)" alt="pilt" class="articleImg" />
+					<h2 id="pealkiri">@articleData(1)</h2>
+					<section id="sissejuhatus">
+						@articleData(2)
+					</section>
+					<br>
+					<section id="teemaarendus">
+						@articleData(3)
+					</section>
+					<br>
+					<section id="kokkuvote">
+						@articleData(4)
+					</section>
+				</article>
 				<br>
-				<section id="teemaarendus">
-					@articleData(3)
-				</section>
-				<br>
-				<section id="kokkuvote">
-					@articleData(4)
-				</section>
-			</article>
-			<br>
-			
-			<form id="kommentaarid" action="/saveComment/@articleData(0)" method="POST">
-				<textarea id="kommentaarikast" name="kommentaarikast">Kommentaar</textarea>
-				<input id="nimiKommentaar" type="text" name="nimi"
-				onfocus="if(this.value == 'Nimi') { this.value = ''; }" value="Nimi" />
-				<input id="emailKommentaar" type="text" name="e-mail"
-				onfocus="if(this.value == 'e-mail') { this.value = ''; }"
-				value="e-mail" /> <input id="saada" type="submit"
-				value="Kommenteeri" />
-			</form>
-			
-			<input id="loeVeelKommentaare" type="button" value="Loe teisi kommentaare">
-			<div id="commentsBody" class="commentsBody">
-			@for(i <- 0 until commentData.size()){
-				<div class="comment">
-					<div class="riba">
-						<div class="nimi"> @commentData(i)(1) </div>
-						<div class="email"> @commentData(i)(2) </div>
-						<div class="kuupaev"> @commentData(i)(4) </div>
-						<form action="/inappropriateComment/@commentData(i)(0)" method="GET">
-							<input class="ebasobivKommentaar" type="submit" value="Teata ebasobivast kommentaarist" >
-						</form>
-						<form action="/addLike/@commentData(i)(0)" method="GET">	
-							<input class="like" type="submit" value="Like"> <p> @commentData(i)(3)</p><br>
-						</form>
+				
+				<form id="kommentaarid" action="/saveComment/@articleData(0)" method="POST">
+					<textarea id="kommentaarikast" name="kommentaarikast">Kommentaar</textarea>
+					<input id="nimiKommentaar" type="text" name="nimi"
+					onfocus="if(this.value == 'Nimi') { this.value = ''; }" value="Nimi" />
+					<input id="emailKommentaar" type="text" name="e-mail"
+					onfocus="if(this.value == 'e-mail') { this.value = ''; }"
+					value="e-mail" /> <input id="saada" type="submit"
+					value="Kommenteeri" />
+				</form>
+				
+				<input id="loeVeelKommentaare" type="button" value="Loe teisi kommentaare">
+				<div id="commentsBody" class="commentsBody">
+				@for(i <- 0 until commentData.size()){
+					<div class="comment">
+						<div class="riba">
+							<div class="nimi"> @commentData(i)(1) </div>
+							<div class="email"> @commentData(i)(2) </div>
+							<div class="kuupaev"> @commentData(i)(4) </div>
+							<form action="/inappropriateComment/@commentData(i)(0)" method="GET">
+								<input class="ebasobivKommentaar" type="submit" value="Teata ebasobivast kommentaarist" >
+							</form>
+							<form action="/addLike/@commentData(i)(0)" method="GET">	
+								<input class="like" type="submit" value="Like"> <p> @commentData(i)(3)</p><br>
+							</form>
+						</div>
+						<div class="sisu"> @commentData(i)(5)</div>
 					</div>
-					<div class="sisu"> @commentData(i)(5)</div>
+				}
 				</div>
-			}
+				<script type="text/javascript" src="@routes.Assets.at("javascripts/comments.js")"></script>
 			</div>
 		</div>
 	</body>
