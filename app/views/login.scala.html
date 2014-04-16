@@ -20,9 +20,7 @@
 					<p><button type="submit">Login</button> </p>
 				</form>
 				<div id="fb-root"></div>
-				<fb:login-button scope="email" onlogin="facebookLogin('@url')">
-					Logi sisse Facebooki kaudu
-				</fb:login-button>
+				<div class="fb-login-button" data-size="medium" data-onlogin="facebookLogin('@request.uri')"></div>
 			</div>
 		</div>
 	</body>
