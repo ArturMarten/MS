@@ -1,7 +1,7 @@
-window.onload = function() {
+/*window.onload = function() {
      initialiseStateFromURL();
-     setInterval(initialiseStateFromURL, 1000);
-   }
+     //setInterval(initialiseStateFromURL, 1000);
+   }*/
 /*
    var recentHash = "";
    function pollHash() {
@@ -14,11 +14,12 @@ window.onload = function() {
      // URL has changed, update the UI accordingly.
      openTab(initialTab);
   
-   }*/
+   }
+  
 function initialiseStateFromURL() {
  var initialTab = window.location.hash;
  openTab(initialTab);
-}
+}*/
 $("#wrap a").click(function(){
 	window.location.hash = "#article";
 	$("#wrap").load(this.href + " #articlewrap");
@@ -30,7 +31,7 @@ $("#sorteerimine a").click(function(){
 	return false
 })
 $("#teemad a").click(function(){
-	window.location.hash = "";
+	window.location.hash = "#teemad";
 	$("#wrap").load(this.href + " #wrap");
 	return false
 })
