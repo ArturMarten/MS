@@ -6,16 +6,16 @@
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED"> 
 		<title>Avaleht toimetaja</title>
-		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/maineditor.css")"/>
+		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")"/>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
    </head>
    
    <body>
 		<div id="riba">
-			<a id="logivalja" href="/editor/logout/@{request.uri}">Logi välja</a>
-			<p id="kasutajatunnus">@user.first_name @user.last_name</p>
-			<a id="newslettereditor" href="/editor/newsletter">Halda uudiskirju </a>
-			<a id="uusUudis" href="/editor/newArticle">Uus uudis</a>
+			<a id="logivalja" class="button2" href="/editor/logout/@{request.uri}">Logi välja</a>
+			<p id="kasutajatunnus" class="button1">@user.first_name @user.last_name</p>
+			<a id="newslettereditor" href="/editor/newsletter" class="button4">Halda uudiskirju </a>
+			<a id="uusUudis" href="/editor/newArticle" class="button3">Uus uudis</a>
 		</div>
 		<div id="content">
 			<table id="teemad">

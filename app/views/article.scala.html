@@ -6,6 +6,7 @@
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED">
 		<title>@articleData(1)</title>
+		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")"/>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/login-popup.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/facebook.js")"></script>
@@ -13,11 +14,11 @@
 	</head>
 	
 	<body>
-		<div id="content">
 			<a href="/"><img id="logo" src="@routes.Assets.at("images/logo.png")" alt="MS uudised"/></a>
 			<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
 			<a id="register" href="/register">Registreeri </a>
 			<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
+		<div id="content">
 			<table id="teemad">
 				<tr>
 					<td id="teema1"><a href="/new">Teema1</a></td>
@@ -42,8 +43,8 @@
 			</div>
 			
 			<div id="articlewrap">
-				<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/article.css")"/>
-				<article>
+				
+				<div id="article1">
 					<img id="articleImage" src="/getImage/@articleData(0)" alt="pilt" class="articleImg" />
 					<h2 id="pealkiri">@articleData(1)</h2>
 					<section id="sissejuhatus">
@@ -57,7 +58,7 @@
 					<section id="kokkuvote">
 						@articleData(4)
 					</section>
-				</article>
+				</div>
 				<br>
 				
 				<form id="kommentaarid" action="/saveComment/@articleData(0)" method="POST">
