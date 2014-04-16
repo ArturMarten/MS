@@ -12,7 +12,11 @@ body{
     background-color: #81A594;
 	border-radius: 15px 15px;
 }
-
+#logo {
+	float: left;
+	margin-left: 3%;
+	margin-top: 1%;
+	width: 15%;}
 #newsletter{
     float: right;
     margin-right: 1em;
