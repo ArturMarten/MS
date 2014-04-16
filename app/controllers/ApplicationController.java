@@ -4,7 +4,6 @@ import com.avaje.ebean.Ebean;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Users;
-import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.login;
