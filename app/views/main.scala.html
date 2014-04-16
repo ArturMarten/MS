@@ -14,6 +14,7 @@
 	</head>
 	
 	<body>
+		<a href="/"><img id="logo" src="@routes.Assets.at("images/logo.png")"/></a>
 		<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
 		<a id="register" href="/register">Registreeri </a>
 		<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
@@ -71,8 +72,7 @@
 						</article>
 					}
 				</div>
-			<script type="text/javascript" src="@routes.Assets.at("javascripts/sort-ajax.js")"></script>
-			<script type="text/javascript" src="@routes.Assets.at("javascripts/article-ajax.js")"></script>
+			<script type="text/javascript" src="@routes.Assets.at("javascripts/ajax.js")"></script>
 			</div>
 		</div>
 	</body>
