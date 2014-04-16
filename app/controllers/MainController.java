@@ -61,7 +61,7 @@ public class MainController extends ApplicationController {
 					.executeQuery("SELECT article.id, article.title, article.intro FROM article ORDER BY article.views DESC LIMIT 10");
 		} else if (sort == "most_commentated") {
 			result = statement
-					.executeQuery("SELECT article.id, article.title, article.intro, count(*) AS count FROM article, comment WHERE (article.id = comment.article_id) GROUP BY article.id ORDER BY count(*) DESC LIMIT 10");
+					.executeQuery("SELECT article.id, article.title, article.intro, count(*) AS count FROM article INNER JOIN comment ON (article.id = comment.article_id) GROUP BY article.id ORDER BY count(*) DESC LIMIT 10");
 		}
 		return result;
 	}
