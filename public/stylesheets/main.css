@@ -3,7 +3,7 @@ body{
     background-color: #E5E4D7;
     margin-left: 12%;
     margin-right: 12%;
-	min-width: 32em;
+	min-width: 33em;
 }
 #logo {
 	float: left;
@@ -225,7 +225,7 @@ article {
 	margin: 3% 0% 0% 10%;
 }
 #saada, #loeVeelKommentaare{
-	margin: 1% 0%;
+	margin: 1% 1%;
   background   : #FFF;
   cursor       : pointer;
 }
@@ -243,4 +243,34 @@ form{
 #sissejuhatus, #teemaarendus, #kokkuvote{
     font-size: 1.2em; 
     width: 90%;
+}
+#editor{
+	margin: 0% 8%;
+}
+#summary{
+    display : block;
+    width   : 70%;
+    height  : 10em;
+    resize  : none;
+    overflow: auto;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+}
+#intro, #body{
+    display : block;
+    width   : 70%;
+    height  : 15em;
+    resize  : none;
+    overflow: auto;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+}
+#title{
+    display : block;
+    width   : 70%;
+    height  : 2em;
+    resize  : none;
+    overflow: auto;
+    font-size: 1.1em;
+    margin-bottom: 1em;
 }

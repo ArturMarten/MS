@@ -5,6 +5,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED">
+		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")"/>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/comments.js")"></script>
 		<title>Uudistetoimetaja</title>
@@ -12,10 +13,10 @@
 	
 	<body>
 		<div id="riba">
-			<a id="logivalja" href="/editor/logout/@{request.uri}">Logi välja</a>
-			<p id="kasutajatunnus">@user.first_name @user.last_name</p>
-			<a id="newslettereditor" href="/editor/newsletter">Halda uudiskirju</a>
-			<a id="uusUudis" href="/editor/newArticle">Uus uudis</a>
+			<a class="button1" id="logivalja" href="/editor/logout/@{request.uri}">Logi välja</a>
+			<p class="button2" id="kasutajatunnus">@user.first_name @user.last_name</p>
+			<a class="button4" id="newslettereditor" href="/editor/newsletter">Halda uudiskirju</a>
+			<a class="button3" id="uusUudis" href="/editor/newArticle">Uus uudis</a>
 		</div>
 		<div id="content">
 			<table id="teemad">
@@ -28,9 +29,8 @@
 				</tr>
 			</table>
 			<div id="articlewrap">	
-				<link rel="stylesheet" href="@routes.Assets.at("stylesheets/articleeditor.css")"/>
-				<article>
-					<img id="ajaleht1" src="/getImage/@articleData(0)" alt="pilt">
+				<div id="article1">
+					<img id="articleImage" src="/getImage/@articleData(0)" alt="pilt">
 					<br>
 					<form method="post" action="/uploadImage/@articleData(0)" enctype="multipart/form-data">
 						<input type="file" name="image">
@@ -48,7 +48,7 @@
 						<textarea id="summary" name = "summary">@articleData(4)</textarea>
 						<input id="save" type="submit" value="Salvesta muudatused">
 					</form>
-				</article>
+				</div>
 				
 				<br>
 				<input id="loeVeelKommentaare" type="button"

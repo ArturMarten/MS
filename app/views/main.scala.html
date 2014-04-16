@@ -41,7 +41,7 @@
 			
 			<div class="popup">
 				@helper.form(routes.ApplicationController.authenticate(request.uri)) {
-					<p><input type="email" name="email" placeholder="Email"></p>
+					<p><input type="email" name="email" id="emailInput" placeholder="Email"></p>
 					<p><input type="password" name="password" placeholder="Parool"></p>
 					<p><button type="submit">Login</button> </p>
 				}
