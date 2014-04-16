@@ -37,9 +37,7 @@
 				}
 				<button data-href="#" class="sulge_popup">Close</button>
 				<div id="fb-root"></div>
-				<fb:login-button scope="email" onlogin="facebookLogin('@request.uri')">
-					Logi sisse Facebooki kaudu
-				</fb:login-button>
+				<div class="fb-login-button" data-size="medium" data-onlogin="facebookLogin('@request.uri')"></div>
 			</div>
 			
 			<div id="articlewrap">
