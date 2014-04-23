@@ -1,7 +1,7 @@
 @(articleData: List[String])
 
 <!DOCTYPE html>
-<html>
+<html manifest="@routes.Assets.at("manifests/cache.mf")">
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED">
@@ -11,7 +11,6 @@
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/login-popup.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/facebook.js")"></script>
-		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery.ba-url.js")"></script>
 	</head>
 	
 	<body>
@@ -71,7 +70,7 @@
 						</article>
 					}
 				</div>
-			<script type="text/javascript" src="@routes.Assets.at("javascripts/ajax.js")"></script>
+				<script type="text/javascript" src="@routes.Assets.at("javascripts/ajax.js")"></script>
 			</div>
 		</div>
 	</body>

@@ -1,0 +1,17 @@
+CACHE MANIFEST
+
+CACHE: 
+/assets/stylesheets/main.css
+/assets/stylesheets/popup.css
+/assets/javascripts/ajax.js
+/assets/javascripts/jquery-1.9.0.min.js
+/assets/javascripts/login-popup.js
+/assets/javascripts/facebook.js
+/assets/images/logo.png
+/assets/images/image2.jpg
+
+NETWORK:
+*
+
+FALLBACK:
+image2.jpg

@@ -1,7 +1,7 @@
 @(articleData: List[String], commentData: java.util.ArrayList[java.util.ArrayList[String]], user: Users)
 
 <!DOCTYPE html>
-<html>
+<html manifest="@routes.Assets.at("manifests/cache.mf")">
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED">
@@ -28,7 +28,7 @@
 					<td id="teema5"><a href="/editor/new">Teema5</a></td>
 				</tr>
 			</table>
-			<div id="articlewrap">	
+			<div id="wrap">	
 				<div id="article1">
 					<img id="articleImage" src="/getImage/@articleData(0)" alt="pilt">
 					<br>
@@ -69,6 +69,7 @@
 					</div>
 				}
 				</div>
+				<script type="text/javascript" src="@routes.Assets.at("javascripts/ajax.js")"></script>
 			</div>
 		</div>
 	</body>

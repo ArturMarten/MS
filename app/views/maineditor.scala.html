@@ -1,7 +1,7 @@
 @(articleData: List[String],user: Users)
 
 <!DOCTYPE html>
-<html>
+<html manifest="@routes.Assets.at("manifests/cache.mf")">
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED"> 
@@ -67,8 +67,8 @@
 						</article>
 					}
 				</div>
+				<script type="text/javascript" src="@routes.Assets.at("javascripts/ajax.js")"></script>
 			</div>
-		<script type="text/javascript" src="@routes.Assets.at("javascripts/ajax.js")"></script>
 		</div>
 	</body>
 </html>
