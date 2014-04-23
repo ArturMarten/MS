@@ -8,6 +8,7 @@ $(document).ready(function() {
 		document.getElementById("emailInput").focus();
 		$(".sulge_popup").click(function() {
 			$(".popup").hide();
+			
 		});
     });
 });

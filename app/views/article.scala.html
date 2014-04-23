@@ -29,6 +29,14 @@
 				</tr>
 			</table>
 			
+			<table id= "sorteerimine">
+				<tr>
+					<td id="uued"><a href="/new">uued</a></td>
+					<td id="enimloetud"><a href="/most-viewed">enim loetud</a></td>
+					<td id="enimkommenteeritud"><a href="/most-commentated">enim kommenteeritud</a></td>
+				</tr>
+			</table>
+			
 			<div class="popup">
 				@helper.form(routes.ApplicationController.authenticate(request.uri)) {
 					<p><input type="email" name="email" placeholder="Email"></p>
