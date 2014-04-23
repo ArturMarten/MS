@@ -1,30 +1,19 @@
 $("#wrap a").click(function(){
-	window.location.hash = "article"+this.href.substring(this.href.lastIndexOf("/")+1,this.href.length);
+	window.location.hash = "article/"+this.href.substring(this.href.lastIndexOf("/")+1,this.href.length);	
 	$("#wrap").load(this.href + " #wrap");
-	return false
+	return false;
 })
 $("#sorteerimine a").click(function(){
-	window.location.hash = this.href.substring(this.href.lastIndexOf("/"),this.href.length);
+	window.location.hash = this.href.substring(this.href.lastIndexOf("/")+1,this.href.length);
 	$("#wrap").load(this.href + " #wrap");
-	return false
+	return false;
 })
 $("#teemad a").click(function(){
-	window.location.hash = this.href.substring(this.href.lastIndexOf("/"),this.href.length);
+	window.location.hash = this.href.substring(this.href.lastIndexOf("/")+1,this.href.length);
 	$("#wrap").load(this.href + " #wrap");
-	return false
+	return false;
 })
-/*
-var recentHash = "";
-var checkHash = function() {
-  var hash = document.location.hash;
-  if (hash) {
-	hash = hash.substr(1);
-	if (hash == recentHash) {
-	  return;
-	}
-	recentHash = hash;
-	loadPage(hash);
-  }
-}
-setInterval(checkHash, 1000);
-*/
+
+if (window.location.hash) {
+	window.location.replace("/" + window.location.hash.substring(1,window.location.hash.length));
+};
