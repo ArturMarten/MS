@@ -64,6 +64,7 @@ public class Article extends Model{
 
 		resultUudis.close();
 		statementUudis.close();
+		connection.close();
 		
 		return uudiseandmed;
 	}
