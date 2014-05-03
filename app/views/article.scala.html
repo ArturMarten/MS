@@ -1,4 +1,4 @@
-@(articleData: List[String], commentData: java.util.ArrayList[java.util.ArrayList[String]])
+@(articleData: List[String], commentData: java.util.ArrayList[java.util.ArrayList[String]], user: Users)
 
 <!DOCTYPE html>
 <html manifest="@routes.Assets.at("manifests/cache.mf")">
@@ -14,10 +14,17 @@
 	</head>
 	
 	<body>
-			<a href="/"><img id="logo" src="@routes.Assets.at("images/logo.png")" alt="MS uudised"/></a>
+		<a href="/"><img id="logo" src="@routes.Assets.at("images/logo.png")" alt="MS uudised"/></a>
+		@if(session().get("email")) {
+			<a class="logoutButton" id="logivalja" href="/logout/@{request.uri}">Logi välja</a>
+			<p class="usernameButton" id="kasutajatunnus">@user.first_name @user.last_name</p>
+			<a class="newsletterButton" id="newslettereditor" href="/newsletter">Halda uudiskirju</a>
+			<a class="newarticleButton" id="uusUudis" href="/newArticle">Uus uudis</a>
+		} else{
 			<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
 			<a id="register" href="/register">Registreeri </a>
 			<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
+		}
 		<div id="content">
 			<table id="teemad">
 				<tr>
@@ -51,21 +58,40 @@
 			<div id="wrap">
 				<div id="article1">
 					<img id="articleImage" src="/getImage/@articleData(0)" alt="pilt" class="articleImg" />
-					<h2 id="pealkiri">@articleData(1)</h2>
-					<section id="sissejuhatus">
-						@articleData(2)
-					</section>
-					<br>
-					<section id="teemaarendus">
-						@articleData(3)
-					</section>
-					<br>
-					<section id="kokkuvote">
-						@articleData(4)
-					</section>
+					@if(session().get("email")) {
+						<br>
+						<form method="post" action="/uploadImage/@articleData(0)" enctype="multipart/form-data">
+							<input type="file" name="image">
+							<input type="submit" value="Lae pilt üles">
+						</form>
+						<br>
+						<form method="post"  action="/saveArticle/@articleData(0)">
+							<b>Pealkiri</b>
+							<textarea id="title" name = "title">@articleData(1)</textarea>
+							<b>Sissejuhatus</b>
+							<textarea id="intro" name = "intro">@articleData(2)</textarea>
+							<b>Teemaarendus</b>
+							<textarea id="body" name = "body">@articleData(3)</textarea>
+							<b>Kokkuvõte</b>
+							<textarea id="summary" name = "summary">@articleData(4)</textarea>
+							<input id="save" type="submit" value="Salvesta muudatused">
+						</form>
+					} else {
+						<h2 id="pealkiri">@articleData(1)</h2>
+						<section id="sissejuhatus">
+							@articleData(2)
+						</section>
+						<br>
+						<section id="teemaarendus">
+							@articleData(3)
+						</section>
+						<br>
+						<section id="kokkuvote">
+							@articleData(4)
+						</section>
+					}
 				</div>
 				<br>
-				
 				<form id="kommentaarid" action="/saveComment/@articleData(0)" method="POST">
 					<textarea id="kommentaarikast" name="kommentaarikast">Kommentaar</textarea>
 					<input id="nimiKommentaar" type="text" name="nimi"
@@ -75,8 +101,11 @@
 					value="e-mail" /> <input id="saada" type="submit"
 					value="Kommenteeri" />
 				</form>
-				
-				<input id="loeVeelKommentaare" type="button" value="Loe teisi kommentaare">
+				@if(session().get("email")) {
+					<input id="loeVeelKommentaare" type="button" value="Redigeeri kommentaare">
+				} else {
+					<input id="loeVeelKommentaare" type="button" value="Loe teisi kommentaare">
+				}
 				<div id="commentsBody" class="commentsBody">
 				@for(i <- 0 until commentData.size()){
 					<div class="comment">
@@ -84,14 +113,21 @@
 							<div class="nimi"> @commentData(i)(1) </div>
 							<div class="email"> @commentData(i)(2) </div>
 							<div class="kuupaev"> @commentData(i)(4) </div>
-							<form action="/inappropriateComment/@commentData(i)(0)" method="GET">
-								<input class="ebasobivKommentaar" type="submit" value="Teata ebasobivast kommentaarist" >
-							</form>
-							<form action="/addLike/@commentData(i)(0)" method="GET">	
-								<input class="like" type="submit" value="Like"> <p> @commentData(i)(3)</p><br>
-							</form>
+							@if(session().get("email")) {
+								<form action="/deleteComment/@commentData(i)(0)" method="GET">
+								<input class="kustutaKommentaar" type="submit" value="Kustuta kommentaar" >
+								</form>	
+								<p>Meeldimiste arv: @commentData(i)(3)</p><br>
+							} else {
+								<form action="/inappropriateComment/@commentData(i)(0)" method="GET">
+									<input class="ebasobivKommentaar" type="submit" value="Teata ebasobivast kommentaarist" >
+								</form>
+								<form action="/addLike/@commentData(i)(0)" method="GET">	
+									<input class="like" type="submit" value="Like"> <p> @commentData(i)(3) </p><br>
+								</form>
+							}
+							<div class="sisu"> @commentData(i)(5) </div>
 						</div>
-						<div class="sisu"> @commentData(i)(5)</div>
 					</div>
 				}
 				</div>

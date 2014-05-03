@@ -29,7 +29,7 @@ public class ApplicationController extends Controller {
 
 	public static Result logout(String url) {
 		session().clear();
-		return redirect(url.replace("/editor", ""));
+		return redirect(url);
 	}
 
 	public static Result facebookLogin(String url) {
@@ -49,7 +49,7 @@ public class ApplicationController extends Controller {
 			Ebean.save(user);
 		}
 		session().put("email", email);
-		return ok("/editor" + url);
+		return ok(url);
 	}
 
 	public static Result authenticate(String url) {
@@ -59,7 +59,7 @@ public class ApplicationController extends Controller {
 		} else {
 			session().clear();
 			session("email", loginForm.get().email);
-			return redirect("/editor" + url);
+			return redirect(url);
 		}
 	}
 
@@ -94,7 +94,7 @@ public class ApplicationController extends Controller {
 				Users user = new Users(email, password, first_name, last_name);
 				Ebean.save(user);
 				session().put("email", registerForm.get().email);
-				return redirect(routes.MainController.maineditor("main_new"));
+				return redirect(routes.MainController.main("new"));
 			}
 		}
 	}

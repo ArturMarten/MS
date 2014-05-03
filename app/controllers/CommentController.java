@@ -51,7 +51,7 @@ public class CommentController extends ApplicationController{
 		statement.close();
 		connection.close();
 
-		return redirect(routes.ArticleController.articleeditor(article_id));
+		return redirect(routes.ArticleController.article(article_id));
 	}
 
 	public static Result addLike(String comment_id) throws SQLException {

@@ -25,7 +25,6 @@ import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
 import views.html.article;
-import views.html.articleeditor;
 
 
 
@@ -33,16 +32,14 @@ public class ArticleController extends ApplicationController{
 	public static Result article(String article_id) throws SQLException {
 		List<String> uudiseandmed = Article.show(article_id);
 		ArrayList<ArrayList<String>> kommentaar = Comment.show(article_id);
-		return ok(article.render(uudiseandmed, kommentaar));
+		Users user= null;
+		try{
+			user = Users.find.byId(session().get("email"));			
+		}
+		catch(NullPointerException e){}
+		return ok(article.render(uudiseandmed, kommentaar, user));
 	}
 	
-	@Security.Authenticated(Secured.class)
-	public static Result articleeditor(String article_id) throws SQLException {
-		List<String> uudiseandmed = Article.show(article_id);
-		ArrayList<ArrayList<String>> kommentaar = Comment.show(article_id);
-		Users user = Users.find.byId(session().get("email"));
-		return ok(articleeditor.render(uudiseandmed, kommentaar,user));
-	}
 	@Security.Authenticated(Secured.class)
 	public static Result newArticle() throws SQLException{
 		Connection connection = DB.getConnection();
@@ -57,7 +54,7 @@ public class ArticleController extends ApplicationController{
 		statement.close();
 		connection.close();
 		
-		return redirect(routes.ArticleController.articleeditor(article_id));
+		return redirect(routes.ArticleController.article(article_id));
 	}
 	@Security.Authenticated(Secured.class)
 	public static Result saveArticle(String article_id) throws SQLException {
@@ -79,8 +76,7 @@ public class ArticleController extends ApplicationController{
 
 		connection.close();
 		statement.close();
-
-		return redirect(routes.MainController.maineditor("new"));
+		return redirect(routes.MainController.main("new"));
 	}
 	@Security.Authenticated(Secured.class)
 	public static Result deleteArticle(String article_id) throws SQLException {
@@ -88,11 +84,9 @@ public class ArticleController extends ApplicationController{
 		PreparedStatement statement = connection.prepareStatement("DELETE FROM article WHERE id = ?");
 		statement.setInt(1, Integer.parseInt(article_id));
 		statement.executeUpdate();
-
 		statement.close();
 		connection.close();
-		
-		return redirect(routes.MainController.maineditor("new"));
+		return redirect(routes.MainController.main("new"));
 	}
 	@Security.Authenticated(Secured.class)
 	public static Result uploadImage(String article_id) throws SQLException, IOException {
@@ -112,11 +106,8 @@ public class ArticleController extends ApplicationController{
 			
 			statement.close();
 			connection.close();
-			return redirect(routes.ArticleController.articleeditor(article_id));
-			}
-		else{
-			return redirect(routes.ArticleController.articleeditor(article_id));    
-			}
+		}
+		return redirect(routes.ArticleController.article(article_id));
 	}
 	
 	public static Result getImage(String article_id) throws SQLException, IOException {
