@@ -57,3 +57,12 @@ a:active{
 	margin: 1% 1%;
 	border-radius: 15px;
 }
+
+#riba {
+    float: right;
+    padding-right: 12%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 0.8em;
+    overflow: hidden;
+}

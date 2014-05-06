@@ -13,15 +13,10 @@ import play.db.DB;
 import play.mvc.Result;
 import play.mvc.Security;
 import views.html.newsletter;
-import views.html.newslettereditor;
 
 public class NewsletterController extends ApplicationController{
 	
-	public static Result newsletter() {
-		return ok(newsletter.render());
-	}
-	
-	public static Result newslettereditor() throws SQLException {
+	public static Result newsletter() throws SQLException {
 		Connection connection = DB.getConnection();
 		PreparedStatement statement = connection.prepareStatement("SELECT * FROM newsletter");
 		ResultSet result = statement.executeQuery();
@@ -44,9 +39,13 @@ public class NewsletterController extends ApplicationController{
 		result.close();
 		connection.close();
 		
-		Users user = Users.find.byId(session().get("email"));
-		
-		return ok(newslettereditor.render(newsletterData,user));
+		Users user = null;
+		try{
+			user = Users.find.byId(session().get("email"));			
+		}
+		catch(NullPointerException e){}
+
+		return ok(newsletter.render(newsletterData,user));
 	}
 	
 	public static Result addToNewsletter() throws SQLException {
@@ -107,7 +106,7 @@ public class NewsletterController extends ApplicationController{
 		statement.close();
 		connection.close();
 
-		return redirect(routes.NewsletterController.newslettereditor());
+		return redirect(routes.NewsletterController.newsletter());
 	}
 
 }

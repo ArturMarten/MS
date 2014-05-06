@@ -3,13 +3,37 @@ package controllers;
 import com.avaje.ebean.Ebean;
 import com.fasterxml.jackson.databind.JsonNode;
 
+import models.Pinger;
 import models.Users;
+import play.libs.Akka;
+import play.libs.F.Callback0;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.WebSocket;
 import views.html.login;
 import views.html.register;
 import play.data.Form;
 import static play.data.Form.*;
+import static java.util.concurrent.TimeUnit.SECONDS;
+
+
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+
+
+import akka.actor.ActorRef;
+import akka.actor.Cancellable;
+import akka.actor.Props;
+import play.Logger;
+import play.data.DynamicForm;
+import play.db.DB;
+
+import scala.concurrent.duration.Duration;
+
 
 public class ApplicationController extends Controller {
 	public static Result login(String url) {
@@ -29,7 +53,7 @@ public class ApplicationController extends Controller {
 
 	public static Result logout(String url) {
 		session().clear();
-		return redirect(url.replace("/editor", ""));
+		return redirect(url);
 	}
 
 	public static Result facebookLogin(String url) {
@@ -49,7 +73,7 @@ public class ApplicationController extends Controller {
 			Ebean.save(user);
 		}
 		session().put("email", email);
-		return ok("/editor" + url);
+		return ok(url);
 	}
 
 	public static Result authenticate(String url) {
@@ -59,7 +83,7 @@ public class ApplicationController extends Controller {
 		} else {
 			session().clear();
 			session("email", loginForm.get().email);
-			return redirect("/editor" + url);
+			return redirect(url);
 		}
 	}
 
@@ -94,8 +118,32 @@ public class ApplicationController extends Controller {
 				Users user = new Users(email, password, first_name, last_name);
 				Ebean.save(user);
 				session().put("email", registerForm.get().email);
-				return redirect(routes.MainController.maineditor("main_new"));
+				return redirect(routes.MainController.main("new"));
 			}
 		}
+	}
+	public static WebSocket<String> timeWs() {
+		return new WebSocket<String>() {
+			public void onReady(WebSocket.In<String> in, WebSocket.Out<String> out) {
+				final ActorRef pingActor = Akka.system().actorOf(Props.create(Pinger.class, in, out));
+				final Cancellable cancellable = Akka.system().scheduler().schedule(Duration.create(1, SECONDS),
+													Duration.create(1, SECONDS),
+													pingActor,
+													"Tick",
+													Akka.system().dispatcher(),
+													null
+													);
+				in.onClose(new Callback0() {
+					@Override
+					public void invoke() throws Throwable {
+						cancellable.cancel();
+					}
+				});
+			}
+		};
+	}
+	
+	public static Result timeJs() {
+	    return ok(views.js.time.render());
 	}
 }

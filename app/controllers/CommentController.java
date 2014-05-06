@@ -4,12 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import models.Users;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.db.DB;
 import play.mvc.Result;
 import play.mvc.Security;
+import play.mvc.WebSocket;
 
 public class CommentController extends ApplicationController{
 	public static Result saveComment(String article_id) throws SQLException {
@@ -51,7 +56,7 @@ public class CommentController extends ApplicationController{
 		statement.close();
 		connection.close();
 
-		return redirect(routes.ArticleController.articleeditor(article_id));
+		return redirect(routes.ArticleController.article(article_id));
 	}
 
 	public static Result addLike(String comment_id) throws SQLException {

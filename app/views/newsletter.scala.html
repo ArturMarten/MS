@@ -1,3 +1,5 @@
+@(newsletterData : java.util.ArrayList[java.util.ArrayList[String]], user: Users)
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,6 +13,43 @@
 		<div id="kast1">
 			<div id="kast2">
 				<a id="avalehele" href="/new">Avalehele</a>
+				@if(session().get("email")){
+				<div id="riba">
+					<p>@user.first_name @user.last_name</p>
+					<a id="logivälja" href="/logout/@{request.uri}">Logi välja</a>
+				</div>
+				}
+				@if(session().get("email")){
+					<div id="content">
+					<h1>Uudiskiri</h1>
+					<table>
+						<tr id="firstRow">
+							<th>Nimi</th>
+							<th>E-mail</th>
+							<th>Teema1</th>
+							<th>Teema2</th>
+							<th>Teema3</th>
+							<th>Teema4</th>
+							<th>Teema5</th>
+							<th>Kustuta</th>
+						</tr>
+						@for(i <- 0 until newsletterData.size()){
+						<tr>
+							<td>@newsletterData(i)(1)</td>
+							<td>@newsletterData(i)(2)</td>                            
+							<td>@newsletterData(i)(3)</td>
+							<td>@newsletterData(i)(4)</td>
+							<td>@newsletterData(i)(5)</td>
+							<td>@newsletterData(i)(6)</td>
+							<td>@newsletterData(i)(7)</td>
+							<td><form action="/removeFromNewsletter/@newsletterData(i)(0)" method="GET"> 
+								<input type="submit" value="Kustuta">
+							</form></td>
+						</tr>
+						}
+					</table>
+				</div>
+				}else{
 				<h1>Uudiskiri</h1>
 				<form id ="allFields" method = "POST" action ="/addToNewsletter">
 					Nimi: <input name="username" type="text"><br>
@@ -33,7 +72,8 @@
 						</tr>
 					</table>
 					<input type="submit" value="Submit">
-				</form> 
+				</form>
+				}
 			</div>
 		</div>
 	</body>

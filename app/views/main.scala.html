@@ -1,31 +1,44 @@
-@(articleData: List[String])
+@(articleData: List[String],user: Users)
 
 <!DOCTYPE html>
 <html manifest="@routes.Assets.at("manifests/cache.mf")">
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="MS UUDISED">
-		<title>Avaleht</title>
+		@if(session().get("email")) {<title>Avaleht toimetajale</title>
+		} else {<title>Avaleht</title>}
+		
 		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")"/> 
 		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/popup.css")"/>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/login-popup.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/facebook.js")"></script>
+		<script type="text/javascript" src="@routes.ApplicationController.timeJs()"></script>
 	</head>
 	
 	<body>
 		<a href="/"><img id="logo" src="@routes.Assets.at("images/logo.png")" alt="MS uudised"/></a>
-		<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
-		<a id="register" href="/register">Registreeri </a>
-		<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
+		@if(session().get("email")) {
+			<a class="logoutButton" id="logivalja" href="/logout/@{request.uri}">Logi välja</a>
+			<p class="usernameButton" id="kasutajatunnus">@user.first_name @user.last_name</p>
+			<a class="newsletterButton" id="newslettereditor" href="/newsletter">Halda uudiskirju</a>
+			<a class="newarticleButton" id="uusUudis" href="/newArticle">Uus uudis</a>
+		} else {
+			<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
+			<a id="register" href="/register">Registreeri </a>
+			<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
+		}
+		
+		
 		<div id="content">
+			<div id="time"></div>
 			<table id="teemad">
 				<tr>
-					<td><a href="/">Teema1</a></td>
-					<td><a href="/">Teema2</a></td>
-					<td><a href="/">Teema3</a></td> 
-					<td><a href="/">Teema4</a></td>
-					<td><a href="/">Teema5</a></td>
+					<td id="teema1"><a href="/">Teema1</a></td>
+					<td id="teema2"><a href="/">Teema2</a></td>
+					<td id="teema3"><a href="/">Teema3</a></td>
+					<td id="teema4"><a href="/">Teema4</a></td>
+					<td id="teema5"><a href="/">Teema5</a></td>
 				</tr>
 			</table>
 			
@@ -37,7 +50,6 @@
 				</tr>
 			</table>
 
-			
 			<div class="popup">
 				@helper.form(routes.ApplicationController.authenticate(request.uri)) {
 					<p><input type="email" name="email" id="emailInput" placeholder="Email"></p>
@@ -49,12 +61,22 @@
 				<div class="fb-login-button" data-size="medium" data-onlogin="facebookLogin('@request.uri')"></div>
 			</div>
 			
+			
+			
+
+			
 			<div id="wrap">
 				<div id="left_col">
 					@for(i <- 0 to articleData.size/3-1 by 2) {
 						<article>
 							<a href=/article/@articleData(i*3)><img class="articleImage" src="/getImage/@articleData(i*3)" alt="pilt"></a>
 							<br>
+							@if(session().get("email")) {
+							<div id="editor">
+								<a href="/article/@articleData(i*3)">Muuda uudist</a>
+								<a href="/deleteArticle/@articleData(i*3)">Kustuta uudis</a>
+							</div>
+							}
 							<h1><a href=/article/@articleData(i*3)>@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
 						</article>
@@ -65,6 +87,12 @@
 						<article>
 							<a href=/article/@articleData(i*3)><img class="articleImage" src="/getImage/@articleData(i*3)"  alt="pilt"></a>
 							<br>
+							@if(session().get("email")) {
+							<div id="editor">
+								<a href="/article/@articleData(i*3)">Muuda uudist</a>
+								<a href="/deleteArticle/@articleData(i*3)">Kustuta uudis</a>
+							</div>
+							}
 							<h1><a href=/article/@articleData(i*3)>@articleData(i*3+1)</a></h1>
 							<p>@articleData(i*3+2)</p>
 						</article>
