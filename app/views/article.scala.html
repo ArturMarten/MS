@@ -7,10 +7,11 @@
 		<meta name="description" content="MS UUDISED">
 		<title>@articleData(1)</title>
 		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")"/>
+		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/popup.css")"/>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/login-popup.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/facebook.js")"></script>
-		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/popup.css")"/>
+		<script type="text/javascript" src="@routes.ApplicationController.timeJs()"></script>
 	</head>
 	
 	<body>
@@ -26,6 +27,7 @@
 			<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
 		}
 		<div id="content">
+			<div id="time"></div>
 			<table id="teemad">
 				<tr>
 					<td id="teema1"><a href="/">Teema1</a></td>

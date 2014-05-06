@@ -13,7 +13,6 @@ import play.db.DB;
 import play.mvc.Result;
 import play.mvc.Security;
 import views.html.newsletter;
-import views.html.newslettereditor;
 
 public class NewsletterController extends ApplicationController{
 	

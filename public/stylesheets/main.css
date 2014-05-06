@@ -94,6 +94,10 @@ body{
 	font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
+#time{
+	font: bold 100%/120% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
 #teemad{
     align-items: center;
     font-size: 1.4em;

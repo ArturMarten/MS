@@ -13,6 +13,7 @@
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/login-popup.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/facebook.js")"></script>
+		<script type="text/javascript" src="@routes.ApplicationController.timeJs()"></script>
 	</head>
 	
 	<body>
@@ -27,7 +28,10 @@
 			<a id="register" href="/register">Registreeri </a>
 			<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
 		}
+		
+		
 		<div id="content">
+			<div id="time"></div>
 			<table id="teemad">
 				<tr>
 					<td id="teema1"><a href="/">Teema1</a></td>
@@ -56,6 +60,10 @@
 				<div id="fb-root"></div>
 				<div class="fb-login-button" data-size="medium" data-onlogin="facebookLogin('@request.uri')"></div>
 			</div>
+			
+			
+			
+
 			
 			<div id="wrap">
 				<div id="left_col">

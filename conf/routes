@@ -37,5 +37,8 @@ POST   /register                                     controllers.ApplicationCont
 POST   /uploadImage/:article_id                      controllers.ArticleController.uploadImage(article_id: String)
 GET    /getImage/:article_id                         controllers.ArticleController.getImage(article_id: String)
 
+GET     /timeWs                                      controllers.ApplicationController.timeWs()
+GET     /assets/javascripts/time.js                  controllers.ApplicationController.timeJs()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                                controllers.Assets.at(path="/public", file)
