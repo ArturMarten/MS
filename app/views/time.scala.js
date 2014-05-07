@@ -3,7 +3,7 @@ $(function() {
     var dateSocket = new WS("@routes.ApplicationController.timeWs().webSocketURL(request)")
 
     var receiveEvent = function(event) {
-        $("#time").html("Täna on: "+event.data);
+        $("#time").html(event.data);
     }
 
     dateSocket.onmessage = receiveEvent

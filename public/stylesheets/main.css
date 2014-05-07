@@ -5,6 +5,11 @@ body{
     margin-right: 12%;
 	min-width: 33em;
 }
+#time {
+	margin-right:7%;
+	margin-left:7%;
+}
+
 #logo {
 	float: left;
 	margin-left:7%;

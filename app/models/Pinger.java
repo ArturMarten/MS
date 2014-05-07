@@ -2,6 +2,7 @@ package models;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import play.mvc.WebSocket;
 import akka.actor.UntypedActor;
@@ -18,7 +19,8 @@ public class Pinger extends UntypedActor {
 	@Override
 	public void onReceive(Object message) {
 		if (message.equals("Tick")) {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+			Locale locale = new Locale("et", "ET");
+			SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd.MMMM yyyy HH:mm:ss",locale);
 			Calendar cal = Calendar.getInstance();
 			out.write(sdf.format(cal.getTime()));
 		} else {
