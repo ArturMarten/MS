@@ -15,6 +15,7 @@
 	</head>
 	
 	<body>
+		<div id="time"></div>
 		<a href="/"><img id="logo" src="@routes.Assets.at("images/logo.png")" alt="MS uudised"/></a>
 		@if(session().get("email")) {
 			<a class="logoutButton" id="logivalja" href="/logout/@{request.uri}">Logi välja</a>
@@ -27,7 +28,6 @@
 			<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
 		}
 		<div id="content">
-			<div id="time"></div>
 			<table id="teemad">
 				<tr>
 					<td id="teema1"><a href="/">Teema1</a></td>
