@@ -12,6 +12,7 @@ import models.Users;
 import play.db.DB;
 import play.mvc.Result;
 import views.html.main;
+import play.cache.Cache;
 
 public class MainController extends ApplicationController {
 	public static Result main(String sort) throws SQLException {
@@ -33,7 +34,7 @@ public class MainController extends ApplicationController {
 			user = Users.find.byId(session().get("email"));			
 		}
 		catch(NullPointerException e){}
-		
+		response().setHeader(CACHE_CONTROL,"max-age=900");
 		return ok(main.render(articles, user));
 	}
 
