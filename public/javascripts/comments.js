@@ -5,10 +5,12 @@ $(document).ready(function() {
 	
 	function show() {
 	    myDiv.style.visibility = "visible";
+		myDiv.style.display = "block";
 	}
 	
 	function hide() {
 	    myDiv.style.visibility = "hidden";
+		myDiv.style.display = "none";
 	}
 	
 	function toggle() {
