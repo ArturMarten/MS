@@ -16,3 +16,6 @@ $("#teemad a").click(function(){
 	$("#wrap").load(this.href + " #wrap");
 	return false;
 })
+window.onpopstate = function(event) {
+  window.location.href = document.location;
+};
