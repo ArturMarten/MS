@@ -22,9 +22,8 @@ public class Pinger extends UntypedActor {
 		if (message.equals("Tick")) {
 			Locale locale = new Locale("et", "ET");
 			SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd.MMMM yyyy HH:mm:ss",locale);
-			
 			Calendar cal = Calendar.getInstance();
-			cal.setTimeZone(TimeZone.getTimeZone("Estonia/Tallinn"));
+			sdf.setTimeZone(TimeZone.getTimeZone("Europe/Helsinki"));
 			out.write(sdf.format(cal.getTime()));
 		} else {
 			unhandled(message);
