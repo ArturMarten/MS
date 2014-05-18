@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/login-popup.js")"></script>
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/facebook.js")"></script>
 		<script type="text/javascript" src="@routes.ApplicationController.timeJs()"></script>
+		<script type="text/javascript" src="@routes.Assets.at("javascripts/comments.js")"></script>
 	</head>
 	
 	<body>
@@ -56,7 +57,7 @@
 				<div id="fb-root"></div>
 				<div class="fb-login-button" data-size="medium" data-onlogin="facebookLogin('@request.uri')"></div>
 			</div>
-			
+		<div id="prewrap">	
 			<div id="wrap">
 				<div id="article1">
 					<img id="articleImage" src="/getImage/@articleData(0)" alt="pilt" class="articleImg" />
@@ -133,9 +134,9 @@
 					</div>
 				}
 				</div>
-				<script type="text/javascript" src="@routes.Assets.at("javascripts/comments.js")"></script>
-				<script type="text/javascript" src="@routes.Assets.at("javascripts/ajax.js")"></script>
 			</div>
+		</div>
+				<script type="text/javascript" src="@routes.Assets.at("javascripts/ajax.js")"></script>
 		</div>
 	</body>
 </html>
