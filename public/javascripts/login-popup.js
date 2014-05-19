@@ -1,5 +1,7 @@
 window.onload = function() {
-	document.getElementById("logisisse").href = "#";
+	try{
+		document.getElementById("logisisse").href = "#";
+	} catch (err){}
 	return false;
 };
 $(document).ready(function() {

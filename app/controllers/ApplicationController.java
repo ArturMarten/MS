@@ -73,7 +73,7 @@ public class ApplicationController extends Controller {
 			Ebean.save(user);
 		}
 		session().put("email", email);
-		return ok(url);
+		return redirect(url);
 	}
 
 	public static Result authenticate(String url) {
