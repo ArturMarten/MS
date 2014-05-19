@@ -3,7 +3,7 @@ body{
     background-color: #E5E4D7;
     margin-left: 10%;
     margin-right: 10%;
-	min-width: 42em;
+	min-width: 35.9em;
 }
 #time {
 	margin-right:7%;
@@ -12,13 +12,13 @@ body{
 
 #logo {
 	float: left;
-	margin-left:7%;
+	margin-left: 1%;
 	margin-top: 0.1%;
 	width:15%
 }
 #content{
-    margin-left: 5%;
-    margin-right: 5%;
+    /* margin-left: 5%; */
+    /* margin-right: 5%; */
     background-color: #81A594;
 	border-radius: 15px 15px;
 }
@@ -60,7 +60,7 @@ body{
 .logoutButton {
 	float: right;
 	padding: 1% 2% 1% 2%;
-	margin-right: 7%;
+	margin-right: 2%;
 	margin-top: 3%;
 	margin-bottom: 1%;
 	background-color: #FFF;
@@ -71,8 +71,10 @@ body{
 #logisisse{
 	
     float: right;
-	padding: 1% 2% 1% 2%;
-	margin-right: 7%;
+	
+    padding: 1% 2% 1% 2%;
+	
+    margin-right: 2%;
     margin-top: 3%;
     margin-bottom: 1%;
 	background-color: #FFF;
@@ -219,7 +221,7 @@ article {
     position: relative;
 }
 #nimiKommentaar {
-	margin: 0% 1%;
+	margin: 1% 0% 1% 1%;
 }
     
 #articleImage {
@@ -227,14 +229,15 @@ article {
 	margin: 3% 0% 0% 10%;
 }
 #saada, #loeVeelKommentaare{
-	margin: 0% 1% 2% 1%;
+	margin: 1% 0% 1% 0%;
   background   : #FFF;
   cursor       : pointer;
 }
 #kommentaarikast{
 	margin: 0% 1%;
   display : block;
-  width   : 96%;
+  
+	width: 97%;
   height  : 5em;
   resize  : none;
   overflow: auto;

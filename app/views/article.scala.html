@@ -49,14 +49,16 @@
 			
 			<div class="popup">
 				@helper.form(routes.ApplicationController.authenticate(request.uri)) {
-					<p><input type="email" name="email" placeholder="Email"></p>
+					<p><input type="email" name="email" id="emailInput" placeholder="Email"></p>
 					<p><input type="password" name="password" placeholder="Parool"></p>
-					<p><button type="submit">Login</button> </p>
-				}
-				<button data-href="#" class="sulge_popup">Close</button>
+					<button id="popup_submit" type="submit">Login</button>
+					}
+					<button data-href="#" class="sulge_popup">Close</button>
+				<br>
 				<div id="fb-root"></div>
 				<div class="fb-login-button" data-size="medium" data-onlogin="facebookLogin('@request.uri')"></div>
 			</div>
+			
 		<div id="prewrap">	
 			<div id="wrap">
 				<div id="article1">

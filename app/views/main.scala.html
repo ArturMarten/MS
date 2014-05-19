@@ -17,20 +17,21 @@
 		<script type="text/javascript" src="@routes.Assets.at("javascripts/comments.js")"></script>
 	</head>
 	
-	<body>
-		<div id="time"></div>
-		<a href="/"><img id="logo" src="@routes.Assets.at("images/logo.png")" alt="MS uudised"/></a>
-		@if(session().get("email")) {
-			<a class="logoutButton" id="logivalja" href="/logout/@{request.uri}">Logi välja</a>
-			<p class="usernameButton" id="kasutajatunnus">@user.first_name @user.last_name</p>
-			<a class="newsletterButton" id="newslettereditor" href="/newsletter">Halda uudiskirju</a>
-			<a class="newarticleButton" id="uusUudis" href="/newArticle">Uus uudis</a>
-		} else {
-			<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
-			<a id="register" href="/register">Registreeri </a>
-			<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
-		}
+	<body>	
+		<div id="time"></div>	
 		<div id="content">
+			<a href="/"><img id="logo" src="@routes.Assets.at("images/logo.png")" alt="MS uudised"/></a>
+			@if(session().get("email")) {
+				<a class="logoutButton" id="logivalja" href="/logout/@{request.uri}">Logi välja</a>
+				<p class="usernameButton" id="kasutajatunnus">@user.first_name @user.last_name</p>
+				<a class="newsletterButton" id="newslettereditor" href="/newsletter">Halda uudiskirju</a>
+				<a class="newarticleButton" id="uusUudis" href="/newArticle">Uus uudis</a>
+			} else {
+				<a id="logisisse" href="/login/@{request.uri}" class="popup_button">Logi sisse </a>
+				<a id="register" href="/register">Registreeri </a>
+				<a id="newsletter" href="/newsletter">Telli uudiskiri </a>
+			}
+			<br>
 			<table id="teemad">
 				<tr>
 					<td id="teema1"><a href="/">Teema1</a></td>
@@ -53,9 +54,10 @@
 				@helper.form(routes.ApplicationController.authenticate(request.uri)) {
 					<p><input type="email" name="email" id="emailInput" placeholder="Email"></p>
 					<p><input type="password" name="password" placeholder="Parool"></p>
-					<p><button type="submit">Login</button> </p>
-				}
-				<button data-href="#" class="sulge_popup">Close</button>
+					<button id="popup_submit" type="submit">Login</button>
+					}
+					<button data-href="#" class="sulge_popup">Close</button>
+				<br>
 				<div id="fb-root"></div>
 				<div class="fb-login-button" data-size="medium" data-onlogin="facebookLogin('@request.uri')"></div>
 			</div>

@@ -2,22 +2,19 @@
 /* CSS Document */
 
 .popup{
-	padding: 0% 1%; 
+	padding: 0% 1% 1% 1%; 
 	display: none; 
 	background: #81A594; 
 	border: 1px solid;
 	z-index: 10;
 	position: absolute; 
-	right: 14%;
-	top: 0.9%;
+	right: 10%;
+	top: 3%;
 	border-radius: 10px;
-	padding-bottom: 1%;
 }
 
 .sulge_popup{
-	position: absolute;
-	bottom: 26.6%; 
-	right: 7%;
+	float: right;
 }
 
 .popup_kiri{
@@ -27,4 +24,7 @@
 	font-family: Arial;
 	background-color: #FFF;
 	border-radius: 5px;
+}
+#popup_submit{
+	margin-bottom: 5%;
 }
