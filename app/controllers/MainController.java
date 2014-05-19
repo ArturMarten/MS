@@ -34,7 +34,7 @@ public class MainController extends ApplicationController {
 			user = Users.find.byId(session().get("email"));			
 		}
 		catch(NullPointerException e){}
-		response().setHeader(CACHE_CONTROL,"max-age=900");
+		response().setHeader(CACHE_CONTROL,"max-age=3600");
 		return ok(main.render(articles, user));
 	}
 

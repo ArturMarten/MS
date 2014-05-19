@@ -8,10 +8,3 @@ CACHE:
 /assets/javascripts/login-popup.js
 /assets/javascripts/facebook.js
 /assets/images/logo.png
-/assets/images/image2.jpg
-
-NETWORK:
-*
-
-FALLBACK:
-image2.jpg

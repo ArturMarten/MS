@@ -37,6 +37,7 @@ public class ArticleController extends ApplicationController{
 			user = Users.find.byId(session().get("email"));			
 		}
 		catch(NullPointerException e){}
+		response().setHeader(CACHE_CONTROL,"max-age=900");
 		return ok(article.render(uudiseandmed, kommentaar, user));
 	}
 	
@@ -113,6 +114,7 @@ public class ArticleController extends ApplicationController{
 	public static Result getImage(String article_id) throws SQLException, IOException {
 		File image = new File("tmp/image"+article_id+".jpg");
 		if(image.exists()){
+			response().setHeader(CACHE_CONTROL,"max-age=3600");
 			return ok(image);
 		}
 		else{
