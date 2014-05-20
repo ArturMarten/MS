@@ -37,7 +37,7 @@ public class ArticleController extends ApplicationController{
 			user = Users.find.byId(session().get("email"));			
 		}
 		catch(NullPointerException e){}
-		response().setHeader(CACHE_CONTROL,"max-age=900");
+		response().setHeader(CACHE_CONTROL,"max-age=3600");
 		return ok(article.render(uudiseandmed, kommentaar, user));
 	}
 	
@@ -113,24 +113,19 @@ public class ArticleController extends ApplicationController{
 	
 	public static Result getImage(String article_id) throws SQLException, IOException {
 		File image = new File("tmp/image"+article_id+".jpg");
-		if(image.exists()){
-			response().setHeader(CACHE_CONTROL,"max-age=3600");
-			return ok(image);
-		}
-		else{
-			Connection connection = DB.getConnection();
-			PreparedStatement statement = connection.prepareStatement("SELECT image FROM article WHERE id = ?");
-			statement.setInt(1, Integer.parseInt(article_id));
-			ResultSet result = statement.executeQuery();
-			result.next();
-			
-			byte[] byteFile = result.getBytes("image");
-			FileUtils.writeByteArrayToFile(image, byteFile);
-			
-			statement.close();
-			connection.close();
-			
-			return ok(image);
-		}
+		response().setHeader(CACHE_CONTROL,"max-age=3600");
+		Connection connection = DB.getConnection();
+		PreparedStatement statement = connection.prepareStatement("SELECT image FROM article WHERE id = ?");
+		statement.setInt(1, Integer.parseInt(article_id));
+		ResultSet result = statement.executeQuery();
+		result.next();
+		
+		byte[] byteFile = result.getBytes("image");
+		FileUtils.writeByteArrayToFile(image, byteFile);
+		
+		statement.close();
+		connection.close();
+		
+		return ok(image);
 	}
 }
