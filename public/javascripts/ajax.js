@@ -22,7 +22,6 @@ $("#teemad a").click(function(){
 	});
 	return false;
 })
-
 function setAjax() {
 	$("#wrap a").click(function(){
 		var state = this.getAttribute('href');
@@ -36,12 +35,6 @@ function setAjax() {
 $(window).on('popstate', function() {
 	window.location.href = document.location;
 });
-
-/*
-window.onpopstate = function(event) {
-  window.location.href = document.location;
-};
-*/
 
 /*
 	var temp = $('');

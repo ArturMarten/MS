@@ -1,6 +1,6 @@
 window.onload = function() {
 	try{
-		document.getElementById("logisisse").href = "#";
+		document.getElementById("logisisse").href ="javascript:void(0);"
 	} catch (err){}
 	return false;
 };
