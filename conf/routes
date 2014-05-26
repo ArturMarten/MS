@@ -17,7 +17,7 @@ POST   /deleteArticle/:article_id                    controllers.ArticleControll
 POST   /saveComment/:article_id                      controllers.CommentController.saveComment(article_id: String)
 GET    /addLike/:comment_id                          controllers.CommentController.addLike(comment_id: String)
 GET    /inappropriateComment/:comment_id             controllers.CommentController.inappropriateComment(comment_id: String)
-GET    /deleteComment/:comment_id                    controllers.CommentController.deleteComment(comment_id: String)
+POST    /deleteComment/:comment_id                    controllers.CommentController.deleteComment(comment_id: String)
 
 GET    /newsletter                                   controllers.NewsletterController.newsletter()
 POST   /addToNewsletter                              controllers.NewsletterController.addToNewsletter()

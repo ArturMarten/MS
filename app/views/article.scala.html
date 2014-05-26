@@ -119,7 +119,7 @@
 							<div class="email"> @commentData(i)(2) </div>
 							<div class="kuupaev"> @commentData(i)(4) </div>
 							@if(session().get("email")) {
-								<form action="/deleteComment/@commentData(i)(0)" method="GET">
+								<form action="/deleteComment/@commentData(i)(0)" method="post">
 								<input class="kustutaKommentaar" type="submit" value="Kustuta kommentaar" >
 								</form>	
 								<p>Meeldimiste arv: @commentData(i)(3)</p><br>
